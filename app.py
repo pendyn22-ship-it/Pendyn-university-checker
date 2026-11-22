@@ -1,4 +1,5 @@
 import io
+import urllib.parse
 import pandas as pd
 import streamlit as st
 
@@ -25,7 +26,7 @@ st.markdown("""
             🎓 Pendyn's University Checker
         </h1>
         <p style="margin: 8px 0 0 0; font-size: 15px; color: #E2E8F0; line-height: 1.4;">
-            Calculate aggregates, analyze your admission chances with the smart meter, explore career paths, and plan your top 3 choices.
+            Calculate aggregates, analyze admission chances, check subject prerequisites, and share your choices via WhatsApp.
         </p>
     </div>
 """, unsafe_allow_html=True)
@@ -60,9 +61,9 @@ def get_career_path(course_name):
     else:
         return "🎓 Professional Practitioner, Researcher, Consultant, Industry Specialist"
 
-# --- FEATURE 1: WASSCE GRADE CALCULATOR ---
-with st.expander("📝 Need help finding your aggregate? Use the WASSCE Calculator"):
-    st.write("Select your grades for your core subjects and best electives to automatically compute your aggregate.")
+# --- FEATURE 1: WASSCE GRADE & PREREQUISITE CALCULATOR ---
+with st.expander("📝 WASSCE Aggregate & Subject Prerequisite Calculator"):
+    st.write("Select your grades to compute your aggregate and verify core credit requirements.")
     
     grade_points = {"A1": 1, "B2": 2, "B3": 3, "C4": 4, "C5": 5, "C6": 6, "D7": 7, "E8": 8, "F9": 9}
     grade_options = list(grade_points.keys())
@@ -87,7 +88,18 @@ with st.expander("📝 Need help finding your aggregate? Use the WASSCE Calculat
     core_science_val = min(grade_points[sc], grade_points[soc])
     calc_aggregate = grade_points[eng] + grade_points[math] + core_science_val + grade_points[e1] + grade_points[e2] + grade_points[e3]
     
+    # Prerequisite Audit Check (Standard requirement: C6 or better in core subjects)
+    eng_val = grade_points[eng]
+    math_val = grade_points[math]
+    core_sc_val = grade_points[sc]
+    
+    passes_cores = (eng_val <= 6) and (math_val <= 6) and (core_sc_val <= 6)
+    
     st.info(f"✨ Calculated Best-6 Aggregate: **{calc_aggregate}**")
+    if passes_cores:
+        st.success("✅ Core Prerequisite Check: Passed! You meet the standard C6 minimum for core English, Math, and Science.")
+    else:
+        st.warning("⚠️ Core Prerequisite Check: One or more core subjects fall below C6 (D7–F9). Note that public universities require credit passes in core subjects regardless of aggregate.")
 
 # --- MAIN CONTROLS ---
 with st.container(border=True):
@@ -133,15 +145,15 @@ if search_query:
 
 eligible_df = filtered_df[filtered_df["Cutoff"] >= user_aggregate].sort_values(by="Cutoff")
 
-# Add Chance Meter Tag to Eligible Courses
+# Add Chance Meter Tag
 def assign_chance(row, user_agg):
     diff = row["Cutoff"] - user_agg
     if diff >= 3:
-        return "🔥 Safe Bet (High Chance)"
+        return "🔥 Safe Bet"
     elif diff >= 1:
-        return "⚖️ Competitive Match"
+        return "⚖️ Competitive"
     else:
-        return "🎯 Target / Reach"
+        return "🎯 Target"
 
 if not eligible_df.empty:
     eligible_df["Admission_Chance"] = eligible_df.apply(lambda r: assign_chance(r, user_aggregate), axis=1)
@@ -176,19 +188,19 @@ with st.container(border=True):
         )
 
 tab1, tab2, tab3, tab4 = st.tabs([
-    f"✅ Qualified ({len(eligible_df)})",
+    f"✅ Qualified Cards ({len(eligible_df)})",
     f"📋 All Cut-Offs ({len(filtered_df)})",
     "⚖️ Compare",
-    "📂 Top 3 Choices Planner"
+    "📂 Top 3 Choices & Share"
 ])
 
 with tab1:
     if not eligible_df.empty:
-        st.write("Browse your qualified courses with admission chance ratings and career pathways:")
+        st.write("Tap any course below to check its admission outlook and career path:")
         
-        for index, row in eligible_df.iterrows():
-            with st.expander(f"{row['University']} - {row['Course']} (Cut-off: {row['Cutoff']})"):
-                st.markdown(f"**Field:** {row['Category']}")
+        for _, row in eligible_df.iterrows():
+            with st.expander(f"{row['University']} — {row['Course']} (Cut-off: {row['Cutoff']})"):
+                st.markdown(f"**Field of Study:** {row['Category']}")
                 st.markdown(f"**Admission Outlook:** **{row['Admission_Chance']}**")
                 st.markdown(f"**Career Pathways:** {get_career_path(row['Course'])}")
         
@@ -252,8 +264,8 @@ with tab3:
         st.warning("No courses available to compare with current filters.")
 
 with tab4:
-    st.subheader("📂 Virtual Top 3 Admission Choices Planner")
-    st.write("Build your mock Ghanaian university application list and audit your strategy!")
+    st.subheader("📂 Virtual Top 3 Admission Choices Planner & WhatsApp Share")
+    st.write("Build your mock Ghanaian university application list and share your choices instantly!")
     
     if not eligible_df.empty:
         df["Full_Choice"] = df["University"] + " — " + df["Course"] + " (Cut-off: " + df["Cutoff"].astype(str) + ")"
@@ -268,8 +280,22 @@ with tab4:
         
         if selected_choices:
             st.markdown("### 📋 Your Mock Application Summary:")
+            summary_lines = [f"*My 2027 WASSCE Admission Plan (Aggregate {user_aggregate})*"]
             for i, choice in enumerate(selected_choices, 1):
                 st.markdown(f"**Choice {i}:** {choice}")
+                summary_lines.append(f"Choice {i}: {choice}")
+            
+            # WhatsApp Share Integration
+            share_text = "\n".join(summary_lines)
+            encoded_text = urllib.parse.quote(share_text)
+            whatsapp_url = f"https://api.whatsapp.com/send?text={encoded_text}"
+            
+            st.markdown(
+                f'<br><a href="{whatsapp_url}" target="_blank">'
+                f'<button style="background-color:#25D366; color:white; padding:10px 20px; border:none; border-radius:8px; font-weight:bold; cursor:pointer;">'
+                f'💬 Share My Top 3 Choices via WhatsApp</button></a><br><br>',
+                unsafe_allow_html=True
+            )
             
             if len(selected_choices) == 3:
                 st.success("🎉 Excellent! You have filled all 3 choice slots for your simulation.")
@@ -281,11 +307,11 @@ with tab4:
             else:
                 st.info(f"You have selected {len(selected_choices)}/3 choices. Add up to 3 to complete your mock application portfolio.")
         else:
-            st.info("💡 Choose up to 3 courses from the dropdown above to simulate your official university choices.")
+            st.info("💡 Choose up to 3 courses from the dropdown above to simulate your official university choices and unlock the WhatsApp share button.")
     else:
         st.warning("No eligible courses available with your current aggregate to populate choices.")
 
-# --- FEATURE 3: GENERAL ADMISSION GUIDELINES EXPANDER ---
+# --- GENERAL ADMISSION GUIDELINES EXPANDER ---
 st.markdown("---")
 with st.expander("ℹ️ General Ghanaian University Admission Requirements (2027 Guide)"):
     st.markdown("""
