@@ -1,3 +1,4 @@
+import io
 import pandas as pd
 import streamlit as st
 
@@ -8,7 +9,7 @@ st.set_page_config(
 )
 
 st.title("🎓 Pendyn's University Checker")
-st.write("Enter your WASSCE aggregate and search for specific courses or filter by university (2027 Cycle).")
+st.write("Calculate your exact aggregate, check your university eligibility, and compare programmes for the 2027 cycle.")
 
 @st.cache_data
 def load_data():
@@ -20,23 +21,55 @@ except Exception as e:
     st.error(f"Could not load cutoffs.csv. Error: {e}")
     st.stop()
 
-# Controls Container
+# --- FEATURE 1: WASSCE GRADE CALCULATOR ---
+with st.expander("📝 Need help finding your aggregate? Use the WASSCE Calculator"):
+    st.write("Select your grades for your core subjects and best electives to automatically compute your aggregate.")
+    
+    grade_points = {"A1": 1, "B2": 2, "B3": 3, "C4": 4, "C5": 5, "C6": 6, "D7": 7, "E8": 8, "F9": 9}
+    grade_options = list(grade_points.keys())
+
+    col_c1, col_c2, col_c3 = st.columns(3)
+    with col_c1:
+        eng = st.selectbox("Core English", grade_options, index=2)
+        sc = st.selectbox("Integrated Science", grade_options, index=2)
+    with col_c2:
+        math = st.selectbox("Core Mathematics", grade_options, index=2)
+        soc = st.selectbox("Social Studies", grade_options, index=2)
+    with col_c3:
+        # Pick best between Science and Social Studies automatically for core 3
+        pass
+
+    st.write("Enter your 3 Best Electives:")
+    col_e1, col_e2, col_e3 = st.columns(3)
+    with col_e1:
+        e1 = st.selectbox("Elective 1", grade_options, index=2)
+    with col_e2:
+        e2 = st.selectbox("Elective 2", grade_options, index=2)
+    with col_e3:
+        e3 = st.selectbox("Elective 3", grade_options, index=2)
+
+    # Calculate best 3 core/compulsory + 3 electives standard logic
+    # Core English + Core Math + Best of (Science, Social) + 3 Electives
+    core_science_val = min(grade_points[sc], grade_points[soc])
+    calc_aggregate = grade_points[eng] + grade_points[math] + core_science_val + grade_points[e1] + grade_points[e2] + grade_points[e3]
+    
+    st.info(f"✨ Calculated Best-6 Aggregate: **{calc_aggregate}** (You can use this number below!)")
+
+# --- MAIN CONTROLS ---
 with st.container(border=True):
-    st.subheader("1️⃣ Enter Your Details & Search")
+    st.subheader("1️⃣ Enter Aggregate & Filter")
     
     user_aggregate = st.number_input(
         "Your Best 6 WASSCE Aggregate (6 to 36)",
         min_value=6,
         max_value=36,
-        value=12,
+        value=int(calc_aggregate) if 'calc_aggregate' in locals() else 12,
         step=1
     )
 
-    # Search Bar for specific course names
     search_query = st.text_input(
         "🔍 Search Course Name (Optional)",
-        placeholder="e.g., Computer, Nursing, Law, Business...",
-        help="Type any keyword to instantly filter course titles."
+        placeholder="e.g., Computer, Nursing, Law, Business..."
     )
 
     col1, col2 = st.columns(2)
@@ -51,7 +84,7 @@ with st.container(border=True):
             ["All Fields"] + sorted(list(df["Category"].unique()))
         )
 
-# Apply Filters & Search Query
+# Filter Logic
 filtered_df = df.copy()
 if selected_uni != "All Universities":
     filtered_df = filtered_df[filtered_df["University"] == selected_uni]
@@ -60,14 +93,14 @@ if selected_cat != "All Fields":
 if search_query:
     filtered_df = filtered_df[filtered_df["Course"].str.contains(search_query, case=False, na=False)]
 
-# Eligibility logic
 eligible_df = filtered_df[filtered_df["Cutoff"] >= user_aggregate].sort_values(by="Cutoff")
 
-st.subheader("2️⃣ Your Results")
+st.subheader("2️⃣ Your Results & Analysis")
 
-tab1, tab2 = st.tabs([
+tab1, tab2, tab3 = st.tabs([
     f"✅ Qualified Courses ({len(eligible_df)})",
-    f"📋 All Listed Cut-Offs ({len(filtered_df)})"
+    f"📋 All Listed Cut-Offs ({len(filtered_df)})",
+    "⚖️ Compare Programmes"
 ])
 
 with tab1:
@@ -77,6 +110,15 @@ with tab1:
             eligible_df[["University", "Course", "Category", "Cutoff"]],
             hide_index=True,
             width="stretch"
+        )
+        
+        # --- FEATURE 2: DOWNLOAD RESULTS AS CSV ---
+        csv_data = eligible_df.to_csv(index=False).encode('utf-8')
+        st.download_button(
+            label="📥 Download Qualified Courses (CSV)",
+            data=csv_data,
+            file_name=f"wassce_eligible_aggregate_{user_aggregate}.csv",
+            mime="text/csv",
         )
     else:
         st.warning(f"No programmes match your search or aggregate threshold of **{user_aggregate}**.")
@@ -92,6 +134,33 @@ with tab2:
         hide_index=True,
         width="stretch"
     )
+
+with tab3:
+    st.write("Select programmes below to compare their cut-off points side-by-side:")
+    if not filtered_df.empty:
+        # Create a unique label for courses
+        filtered_df["Display_Label"] = filtered_df["University"] + " - " + filtered_df["Course"]
+        chosen_courses = st.multiselect(
+            "Choose programmes to compare",
+            options=filtered_df["Display_Label"].tolist(),
+            max_selections=4
+        )
+        if chosen_courses:
+            comparison_df = filtered_df[filtered_df["Display_Label"].isin(chosen_courses)]
+            st.table(comparison_df[["University", "Category", "Course", "Cutoff"]])
+        else:
+            st.info("💡 Select up to 4 courses above to compare them side-by-side.")
+    else:
+            st.warning("No courses available to compare with current filters.")
+
+# --- FEATURE 3: GENERAL ADMISSION GUIDELINES EXPANDER ---
+st.markdown("---")
+with st.expander("ℹ️ General Ghanaian University Admission Requirements (2027 Guide)"):
+    st.markdown("""
+    * **Core Subjects Rule:** Public universities require credit passes (**A1 to C6**) in Core English Language, Core Mathematics, and either Integrated Science or Social Studies.
+    * **Elective Subjects:** You need credit passes in **3 elective subjects** relevant to your desired course of study.
+    * **Competitive Cut-offs:** Highly competitive programmes like Medicine, Law, and Computer Engineering often require stricter thresholds (lower aggregates like 6 to 8).
+    """)
 
 
 
