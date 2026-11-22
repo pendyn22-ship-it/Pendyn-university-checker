@@ -3,13 +3,32 @@ import pandas as pd
 import streamlit as st
 
 st.set_page_config(
-    page_title="WASSCE University Eligibility Checker",
+    page_title="Pendyn's University Checker",
     page_icon="🎓",
     layout="centered"
 )
 
-st.title("🎓 Pendyn's University Checker")
-st.write("Calculate your exact aggregate, check your university eligibility, and get instant admission recommendations for the 2027 cycle.")
+# --- CUSTOM HERO BANNER ---
+st.markdown("""
+    <div style="
+        background: linear-gradient(135deg, #006B3F 0%, #004D2C 100%);
+        padding: 24px 20px;
+        border-radius: 14px;
+        color: white;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    ">
+        <div style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #FCD116; margin-bottom: 6px;">
+            🇬🇭 2027 WASSCE Admissions Guide
+        </div>
+        <h1 style="margin: 0; font-size: 28px; font-weight: 800; color: #FFFFFF; line-height: 1.2;">
+            🎓 Pendyn's University Checker
+        </h1>
+        <p style="margin: 8px 0 0 0; font-size: 15px; color: #E2E8F0; line-height: 1.4;">
+            Calculate your exact Best-6 aggregate, compare Ghanaian university cut-off points, and get instant admission recommendations.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
 @st.cache_data
 def load_data():
@@ -94,9 +113,15 @@ if search_query:
 
 eligible_df = filtered_df[filtered_df["Cutoff"] >= user_aggregate].sort_values(by="Cutoff")
 
+# --- QUICK METRICS DASHBOARD ---
+m1, m2, m3 = st.columns(3)
+m1.metric("🎯 Your Aggregate", f"{user_aggregate}")
+m2.metric("✅ Qualified Courses", f"{len(eligible_df)}")
+m3.metric("🏫 Matching Schools", f"{eligible_df['University'].nunique()}")
+
 st.subheader("2️⃣ Your Results & AI Advisor Summary")
 
-# --- NEW FEATURE: META-AI STYLE CONVERSATIONAL SUMMARY ---
+# --- CONVERSATIONAL ADVISOR SUMMARY ---
 with st.container(border=True):
     st.markdown(f"### 💬 Advisor Response for Aggregate {user_aggregate}")
     if not eligible_df.empty:
@@ -108,7 +133,6 @@ with st.container(border=True):
             f"across **{num_unis} institution(s)** in your current search! Here is a breakdown of where you can apply:"
         )
         
-        # Group by university and write out clean conversational bullet points
         for uni, group in eligible_df.groupby("University"):
             course_list = [f"**{row['Course']}** *(Cut-off: {row['Cutoff']})*" for _, row in group.iterrows()]
             st.markdown(f"🏫 **{uni}:** You can offer {', '.join(course_list)}.")
@@ -207,3 +231,11 @@ with st.expander("ℹ️ General Ghanaian University Admission Requirements (202
     * **Elective Subjects:** You need credit passes in **3 elective subjects** relevant to your desired course of study.
     * **Competitive Cut-offs:** Highly competitive programmes like Medicine, Law, and Computer Engineering often require stricter thresholds (lower aggregates like 6 to 8).
     """)
+
+# --- FOOTER ---
+st.markdown(
+    "<div style='text-align: center; color: #64748B; font-size: 13px; margin-top: 24px;'>"
+    "Built by Pendyn • Always verify final cut-offs against official 2027 university admission brochures."
+    "</div>",
+    unsafe_allow_html=True
+)
