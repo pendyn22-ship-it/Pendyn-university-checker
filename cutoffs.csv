@@ -3,24 +3,31 @@ University of Ghana (UG),Medicine & Health,MBChB Medicine and Surgery,6
 University of Ghana (UG),Medicine & Health,Bachelor of Dental Surgery,7
 University of Ghana (UG),Medicine & Health,Doctor of Pharmacy (PharmD),7
 University of Ghana (UG),Medicine & Health,BSc Nursing,10
+University of Ghana (UG),Medicine & Health,BSc Medical Laboratory Science,11
 University of Ghana (UG),Law & Humanities,Bachelor of Laws (LLB),6
 University of Ghana (UG),Law & Humanities,BA Political Science / Economics,12
 University of Ghana (UG),Law & Humanities,BA Psychology / Sociology,14
 University of Ghana (UG),Business,BSc Administration (Accounting / Finance),8
+University of Ghana (UG),Business,BSc Administration (Marketing / HR),10
 University of Ghana (UG),Computing & IT,BSc Computer Science,8
 University of Ghana (UG),Computing & IT,BSc Information Technology,10
 University of Ghana (UG),Engineering,BSc Computer Engineering,7
 University of Ghana (UG),Engineering,BSc Biomedical Engineering,8
+University of Ghana (UG),Engineering,BSc Agricultural Engineering,14
 KNUST,Medicine & Health,MBChB Human Biology (Medicine),6
 KNUST,Medicine & Health,Doctor of Pharmacy (PharmD),7
 KNUST,Medicine & Health,BSc Medical Laboratory Technology,8
 KNUST,Medicine & Health,BSc Nursing,10
+KNUST,Medicine & Health,BSc Midwifery,12
 KNUST,Engineering,BSc Aerospace Engineering,7
 KNUST,Engineering,BSc Electrical / Electronic Engineering,7
 KNUST,Engineering,BSc Civil Engineering,8
 KNUST,Engineering,BSc Mechanical Engineering,8
+KNUST,Engineering,BSc Geomatic Engineering,11
 KNUST,Computing & IT,BSc Computer Science,7
+KNUST,Computing & IT,BSc Information Technology,9
 KNUST,Built Environment,BSc Architecture,8
+KNUST,Built Environment,BSc Quantity Surveying and Construction Economics,9
 KNUST,Business,BSc Business Administration,9
 KNUST,Law & Humanities,Bachelor of Laws (LLB),6
 University of Cape Coast (UCC),Medicine & Health,MBChB Medicine and Surgery,6
@@ -29,6 +36,7 @@ University of Cape Coast (UCC),Medicine & Health,BSc Nursing,11
 University of Cape Coast (UCC),Law & Humanities,Bachelor of Laws (LLB),7
 University of Cape Coast (UCC),Business,Bachelor of Commerce (Accounting / Finance),11
 University of Cape Coast (UCC),Computing & IT,BSc Computer Science,11
+University of Cape Coast (UCC),Computing & IT,BSc Information Technology,13
 University of Cape Coast (UCC),Education,B.Ed Science / Mathematics,15
 University of Cape Coast (UCC),Education,B.Ed Arts / Social Sciences,16
 University of Education Winneba (UEW),Education,B.Ed Mathematics Education,16
@@ -41,6 +49,7 @@ University for Development Studies (UDS),Agriculture,BSc Agriculture Technology,
 University for Development Studies (UDS),Computing & IT,BSc Computer Science,14
 UMaT (Tarkwa),Engineering,BSc Mining Engineering,9
 UMaT (Tarkwa),Engineering,BSc Petroleum Engineering,9
+UMaT (Tarkwa),Engineering,BSc Mechanical Engineering,11
 UMaT (Tarkwa),Computing & IT,BSc Computer Science and Engineering,11
 UHAS (Ho),Medicine & Health,MBChB Medicine,7
 UHAS (Ho),Medicine & Health,BSc Physician Assistantship,9
@@ -64,6 +73,3 @@ Central University,Medicine & Health,Doctor of Pharmacy (PharmD),12
 Central University,Business,BSc Administration,20
 Valley View University,Computing & IT,BSc Computer Science / IT,20
 Valley View University,Medicine & Health,BSc Nursing,16
-
-
-
