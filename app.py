@@ -161,31 +161,6 @@ with st.expander("ℹ️ General Ghanaian University Admission Requirements (202
     * **Elective Subjects:** You need credit passes in **3 elective subjects** relevant to your desired course of study.
     * **Competitive Cut-offs:** Highly competitive programmes like Medicine, Law, and Computer Engineering often require stricter thresholds (lower aggregates like 6 to 8).
     """) 
-with tab1:
-    if not eligible_df.empty:
-        st.success(f"With **Aggregate {user_aggregate}**, you meet the cut-off for **{len(eligible_df)}** programme(s):")
-        st.dataframe(
-            eligible_df[["University", "Course", "Category", "Cutoff"]],
-            hide_index=True,
-            width="stretch"
-        )
-        
-        csv_data = eligible_df.to_csv(index=False).encode('utf-8')
-        st.download_button(
-            label="📥 Download Qualified Courses (CSV)",
-            data=csv_data,
-            file_name=f"wassce_eligible_aggregate_{user_aggregate}.csv",
-            mime="text/csv",
-        )
-    else:
-        # --- SMARTER ERROR DIAGNOSIS ---
-        st.warning(f"No programmes found for Aggregate {user_aggregate} with your current filters.")
-        
-        # Give them direct hints on how to fix it
-        if selected_uni != "All Universities" or selected_cat != "All Fields" or search_query:
-            st.info(f"💡 **Tip:** You currently have filters active (*University: {selected_uni}*, *Field: {selected_cat}*). Try switching them back to **'All Universities'** and **'All Fields'** to see more options!")
-        else:
-            st.info(f"💡 **Tip:** Aggregate {user_aggregate} might be higher than the cut-off points for the currently listed competitive courses. Try entering a lower aggregate number (like 8 or 10) to see available programmes.")
 
 
 
