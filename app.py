@@ -11,7 +11,7 @@ st.set_page_config(
 # --- CUSTOM HERO BANNER ---
 st.markdown("""
     <div style="
-        background: linear-gradient(135deg, #006B3F 0%, #004D2C 100%);
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
         padding: 24px 20px;
         border-radius: 14px;
         color: white;
@@ -19,13 +19,13 @@ st.markdown("""
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     ">
         <div style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #FCD116; margin-bottom: 6px;">
-            🇬🇭 2027 WASSCE Admissions Guide
+            🇬🇭 2027 WASSCE Admissions Powerhouse
         </div>
         <h1 style="margin: 0; font-size: 28px; font-weight: 800; color: #FFFFFF; line-height: 1.2;">
             🎓 Pendyn's University Checker
         </h1>
         <p style="margin: 8px 0 0 0; font-size: 15px; color: #E2E8F0; line-height: 1.4;">
-            Calculate your exact Best-6 aggregate, compare Ghanaian university cut-off points, and get instant admission recommendations.
+            Calculate aggregates, analyze your admission chances with the smart meter, explore career paths, and plan your top 3 choices.
         </p>
     </div>
 """, unsafe_allow_html=True)
@@ -39,6 +39,26 @@ try:
 except Exception as e:
     st.error(f"Could not load cutoffs.csv. Error: {e}")
     st.stop()
+
+# --- HELPER FUNCTION: CAREER PATHS ---
+def get_career_path(course_name):
+    c_lower = course_name.lower()
+    if "computer" in c_lower or "software" in c_lower or "information" in c_lower or "it" in c_lower:
+        return "💻 Software Engineer, Data Analyst, IT Consultant, Cybersecurity Specialist"
+    elif "nurs" in c_lower:
+        return "🩺 Registered Nurse, Midwife, Healthcare Administrator, Public Health Officer"
+    elif "law" in c_lower:
+        return "⚖️ Barrister, Solicitor, Corporate Legal Advisor, Policy Analyst"
+    elif "medic" in c_lower:
+        return "🏥 Medical Doctor, Surgeon, Medical Researcher, Healthcare Consultant"
+    elif "business" in c_lower or "admin" in c_lower or "accounting" in c_lower or "finance" in c_lower:
+        return "📊 Financial Analyst, Accountant, Corporate Manager, Banker, Entrepreneur"
+    elif "engineer" in c_lower:
+        return "⚙️ Civil/Mechanical/Electrical Engineer, Project Manager, Technical Consultant"
+    elif "agric" in c_lower:
+        return "🌱 Agribusiness Manager, Agronomist, Food Security Analyst, Farm Entrepreneur"
+    else:
+        return "🎓 Professional Practitioner, Researcher, Consultant, Industry Specialist"
 
 # --- FEATURE 1: WASSCE GRADE CALCULATOR ---
 with st.expander("📝 Need help finding your aggregate? Use the WASSCE Calculator"):
@@ -113,6 +133,19 @@ if search_query:
 
 eligible_df = filtered_df[filtered_df["Cutoff"] >= user_aggregate].sort_values(by="Cutoff")
 
+# Add Chance Meter Tag to Eligible Courses
+def assign_chance(row, user_agg):
+    diff = row["Cutoff"] - user_agg
+    if diff >= 3:
+        return "🔥 Safe Bet (High Chance)"
+    elif diff >= 1:
+        return "⚖️ Competitive Match"
+    else:
+        return "🎯 Target / Reach"
+
+if not eligible_df.empty:
+    eligible_df["Admission_Chance"] = eligible_df.apply(lambda r: assign_chance(r, user_aggregate), axis=1)
+
 # --- QUICK METRICS DASHBOARD ---
 m1, m2, m3 = st.columns(3)
 m1.metric("🎯 Your Aggregate", f"{user_aggregate}")
@@ -142,20 +175,24 @@ with st.container(border=True):
             "Check the detailed guide below to see how close you are and what options to explore next!"
         )
 
-tab1, tab2, tab3 = st.tabs([
-    f"✅ Qualified Table ({len(eligible_df)})",
-    f"📋 All Listed Cut-Offs ({len(filtered_df)})",
-    "⚖️ Compare Programmes"
+tab1, tab2, tab3, tab4 = st.tabs([
+    f"✅ Qualified ({len(eligible_df)})",
+    f"📋 All Cut-Offs ({len(filtered_df)})",
+    "⚖️ Compare",
+    "📂 Top 3 Choices Planner"
 ])
 
 with tab1:
     if not eligible_df.empty:
-        st.dataframe(
-            eligible_df[["University", "Course", "Category", "Cutoff"]],
-            hide_index=True,
-            width="stretch"
-        )
+        st.write("Browse your qualified courses with admission chance ratings and career pathways:")
         
+        for index, row in eligible_df.iterrows():
+            with st.expander(f"{row['University']} - {row['Course']} (Cut-off: {row['Cutoff']})"):
+                st.markdown(f"**Field:** {row['Category']}")
+                st.markdown(f"**Admission Outlook:** **{row['Admission_Chance']}**")
+                st.markdown(f"**Career Pathways:** {get_career_path(row['Course'])}")
+        
+        st.markdown("---")
         csv_data = eligible_df.to_csv(index=False).encode('utf-8')
         st.download_button(
             label="📥 Download Qualified Courses (CSV)",
@@ -166,7 +203,6 @@ with tab1:
         )
     else:
         st.warning(f"### Why aren't any courses showing for Aggregate {user_aggregate}?")
-        
         if filtered_df.empty:
             st.info(
                 f"🔍 **No programmes matched your search or filter combination** "
@@ -176,7 +212,6 @@ with tab1:
         else:
             best_cutoff_here = int(filtered_df["Cutoff"].max())
             closest_courses = filtered_df[filtered_df["Cutoff"] == best_cutoff_here]["Course"].tolist()
-            
             st.info(
                 f"📊 **How WASSCE Cut-Offs Work:** In WASSCE grading, **lower numbers mean stronger grades** "
                 f"(Aggregate 6 is the highest score, while 36 is the lowest). To qualify, your aggregate must be "
@@ -185,13 +220,6 @@ with tab1:
                 f"(for *{', '.join(closest_courses[:2])}*)—meaning your score of **{user_aggregate}** is currently "
                 f"**{user_aggregate - best_cutoff_here} point(s) above** that threshold."
             )
-            
-            st.markdown("""
-            **💡 What you can do next:**
-            * **Broaden your search:** Switch University or Field of Study to **'All'**—another university may offer the same course with a higher cut-off.
-            * **Check Tab 2 ('All Listed Cut-Offs'):** View the exact cut-off numbers for every listed programme so you can see how close you are.
-            * **Explore alternative pathways:** Consider related programmes, fee-paying/diploma top-up routes, or resitting one or two subjects via **NOVDEC** to lower your aggregate.
-            """)
 
 with tab2:
     st.write("Compare all programmes matching your filters:")
@@ -222,6 +250,40 @@ with tab3:
             st.info("💡 Select up to 4 courses above to compare them side-by-side.")
     else:
         st.warning("No courses available to compare with current filters.")
+
+with tab4:
+    st.subheader("📂 Virtual Top 3 Admission Choices Planner")
+    st.write("Build your mock Ghanaian university application list and audit your strategy!")
+    
+    if not eligible_df.empty:
+        df["Full_Choice"] = df["University"] + " — " + df["Course"] + " (Cut-off: " + df["Cutoff"].astype(str) + ")"
+        choice_options = df["Full_Choice"].tolist()
+        
+        selected_choices = st.multiselect(
+            "Select up to 3 choices for your application simulation",
+            options=choice_options,
+            max_selections=3,
+            key="top_three_choices_planner"
+        )
+        
+        if selected_choices:
+            st.markdown("### 📋 Your Mock Application Summary:")
+            for i, choice in enumerate(selected_choices, 1):
+                st.markdown(f"**Choice {i}:** {choice}")
+            
+            if len(selected_choices) == 3:
+                st.success("🎉 Excellent! You have filled all 3 choice slots for your simulation.")
+                st.markdown("""
+                **💡 Strategy Audit:**
+                * Make sure your **1st Choice** is your dream course.
+                * Ensure your **2nd or 3rd Choice** includes a safer cut-off to guarantee placement.
+                """)
+            else:
+                st.info(f"You have selected {len(selected_choices)}/3 choices. Add up to 3 to complete your mock application portfolio.")
+        else:
+            st.info("💡 Choose up to 3 courses from the dropdown above to simulate your official university choices.")
+    else:
+        st.warning("No eligible courses available with your current aggregate to populate choices.")
 
 # --- FEATURE 3: GENERAL ADMISSION GUIDELINES EXPANDER ---
 st.markdown("---")
