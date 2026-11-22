@@ -1,36 +1,69 @@
-University,Category,Course,Cutoff,Year
-KNUST,Health Sciences,BSc Human Biology (Medicine),6,2027
-KNUST,Health Sciences,Doctor of Pharmacy,6,2027
-KNUST,Health Sciences,BSc General Nursing,6,2027
-KNUST,Engineering,BSc Computer Engineering,6,2027
-KNUST,Engineering,BSc Electrical Engineering,6,2027
-KNUST,Engineering,BSc Civil Engineering,7,2027
-KNUST,Arts & Law,Bachelor of Laws (LLB),6,2027
-KNUST,Business,BSc Business Administration,9,2027
-KNUST,Science,BSc Computer Science,7,2027
-UG,Health Sciences,Bachelor of Medicine and Surgery,6,2027
-UG,Health Sciences,Doctor of Pharmacy,10,2027
-UG,Health Sciences,BSc Nursing,15,2027
-UG,Arts & Law,Bachelor of Laws (LLB),6,2027
-UG,Business,BSc Administration,8,2027
-UG,Science,BSc Computer Science,7,2027
-UCC,Health Sciences,Bachelor of Medicine and Surgery,8,2027
-UCC,Health Sciences,BSc Nursing,12,2027
-UCC,Arts & Law,Bachelor of Laws (LLB),12,2027
-UCC,Business,Bachelor of Commerce (Accounting),15,2027
-UPSA,Business,BBA Accounting,14,2027
-UPSA,Business,BSc Accounting and Finance,14,2027
-UPSA,Science,BSc Information Technology,16,2027
-UDS,Health Sciences,BSc Nursing,14,2027
-UDS,Engineering,BSc Civil Engineering,14,2027
-UMaT,Engineering,BSc Mining Engineering,12,2027
-UMaT,Engineering,BSc Petroleum Engineering,11,2027
-UEW,Education,BEd Mathematics,18,2027
-UEW,Education,BEd English,20,2027
-Ashesi,Business,BSc Business Administration,12,2027
-Ashesi,Science,BSc Computer Science,10,2027
-Ashesi,Engineering,BSc Computer Engineering,11,2027
-KTU,Engineering,BSc Civil Engineering,24,2027
-KTU,Business,HND Accountancy,28,2027
+University,Category,Course,Cutoff
+University of Ghana (UG),Medicine & Health,MBChB Medicine and Surgery,6
+University of Ghana (UG),Medicine & Health,Bachelor of Dental Surgery,7
+University of Ghana (UG),Medicine & Health,Doctor of Pharmacy (PharmD),7
+University of Ghana (UG),Medicine & Health,BSc Nursing,10
+University of Ghana (UG),Law & Humanities,Bachelor of Laws (LLB),6
+University of Ghana (UG),Law & Humanities,BA Political Science / Economics,12
+University of Ghana (UG),Law & Humanities,BA Psychology / Sociology,14
+University of Ghana (UG),Business,BSc Administration (Accounting / Finance),8
+University of Ghana (UG),Computing & IT,BSc Computer Science,8
+University of Ghana (UG),Computing & IT,BSc Information Technology,10
+University of Ghana (UG),Engineering,BSc Computer Engineering,7
+University of Ghana (UG),Engineering,BSc Biomedical Engineering,8
+KNUST,Medicine & Health,MBChB Human Biology (Medicine),6
+KNUST,Medicine & Health,Doctor of Pharmacy (PharmD),7
+KNUST,Medicine & Health,BSc Medical Laboratory Technology,8
+KNUST,Medicine & Health,BSc Nursing,10
+KNUST,Engineering,BSc Aerospace Engineering,7
+KNUST,Engineering,BSc Electrical / Electronic Engineering,7
+KNUST,Engineering,BSc Civil Engineering,8
+KNUST,Engineering,BSc Mechanical Engineering,8
+KNUST,Computing & IT,BSc Computer Science,7
+KNUST,Built Environment,BSc Architecture,8
+KNUST,Business,BSc Business Administration,9
+KNUST,Law & Humanities,Bachelor of Laws (LLB),6
+University of Cape Coast (UCC),Medicine & Health,MBChB Medicine and Surgery,6
+University of Cape Coast (UCC),Medicine & Health,Doctor of Pharmacy (PharmD),8
+University of Cape Coast (UCC),Medicine & Health,BSc Nursing,11
+University of Cape Coast (UCC),Law & Humanities,Bachelor of Laws (LLB),7
+University of Cape Coast (UCC),Business,Bachelor of Commerce (Accounting / Finance),11
+University of Cape Coast (UCC),Computing & IT,BSc Computer Science,11
+University of Cape Coast (UCC),Education,B.Ed Science / Mathematics,15
+University of Cape Coast (UCC),Education,B.Ed Arts / Social Sciences,16
+University of Education Winneba (UEW),Education,B.Ed Mathematics Education,16
+University of Education Winneba (UEW),Education,B.Ed Information & Communication Technology,16
+University of Education Winneba (UEW),Education,B.Ed English / Social Studies Education,18
+University of Education Winneba (UEW),Business,BBA Accounting / Human Resource Management,16
+University for Development Studies (UDS),Medicine & Health,MBChB Medicine,7
+University for Development Studies (UDS),Medicine & Health,BSc Nursing,12
+University for Development Studies (UDS),Agriculture,BSc Agriculture Technology,18
+University for Development Studies (UDS),Computing & IT,BSc Computer Science,14
+UMaT (Tarkwa),Engineering,BSc Mining Engineering,9
+UMaT (Tarkwa),Engineering,BSc Petroleum Engineering,9
+UMaT (Tarkwa),Computing & IT,BSc Computer Science and Engineering,11
+UHAS (Ho),Medicine & Health,MBChB Medicine,7
+UHAS (Ho),Medicine & Health,BSc Physician Assistantship,9
+UHAS (Ho),Medicine & Health,BSc Public Health / Nursing,12
+UENR (Sunyani),Engineering,BSc Renewable Energy Engineering,12
+UENR (Sunyani),Computing & IT,BSc Computer Science,14
+GCTU (Accra),Computing & IT,BSc Computer Science / Software Engineering,16
+GCTU (Accra),Engineering,BSc Telecommunications Engineering,16
+Accra Technical University (ATU),Engineering,BTech Civil / Electrical Engineering,18
+Accra Technical University (ATU),Computing & IT,BTech Computer Science,18
+Kumasi Technical University (KsTU),Engineering,BTech Mechanical / Chemical Engineering,18
+Kumasi Technical University (KsTU),Business,BTech Accounting with Computing,18
+UPSA (Accra),Business,BSc Accounting / Banking and Finance,12
+UPSA (Accra),Business,BBA Marketing / Business Administration,14
+UPSA (Accra),Law & Humanities,Bachelor of Laws (LLB),8
+UPSA (Accra),Computing & IT,BSc Information Technology Management,15
+Ashesi University,Engineering,BSc Computer Engineering / Electrical Engineering,10
+Ashesi University,Computing & IT,BSc Computer Science / MIS,11
+Ashesi University,Business,BSc Business Administration,12
+Central University,Medicine & Health,Doctor of Pharmacy (PharmD),12
+Central University,Business,BSc Administration,20
+Valley View University,Computing & IT,BSc Computer Science / IT,20
+Valley View University,Medicine & Health,BSc Nursing,16
+
 
 
