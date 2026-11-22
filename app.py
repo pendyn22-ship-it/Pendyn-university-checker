@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 st.title("🎓 Pendyn's University Checker")
-st.write("Calculate your exact aggregate, check your university eligibility, and compare programmes for the 2027 cycle.")
+st.write("Calculate your exact aggregate, check your university eligibility, and get instant admission recommendations for the 2027 cycle.")
 
 @st.cache_data
 def load_data():
@@ -94,17 +94,38 @@ if search_query:
 
 eligible_df = filtered_df[filtered_df["Cutoff"] >= user_aggregate].sort_values(by="Cutoff")
 
-st.subheader("2️⃣ Your Results & Analysis")
+st.subheader("2️⃣ Your Results & AI Advisor Summary")
+
+# --- NEW FEATURE: META-AI STYLE CONVERSATIONAL SUMMARY ---
+with st.container(border=True):
+    st.markdown(f"### 💬 Advisor Response for Aggregate {user_aggregate}")
+    if not eligible_df.empty:
+        num_unis = eligible_df["University"].nunique()
+        num_courses = len(eligible_df)
+        
+        st.write(
+            f"Based on your **Aggregate {user_aggregate}**, you qualify for **{num_courses} programme(s)** "
+            f"across **{num_unis} institution(s)** in your current search! Here is a breakdown of where you can apply:"
+        )
+        
+        # Group by university and write out clean conversational bullet points
+        for uni, group in eligible_df.groupby("University"):
+            course_list = [f"**{row['Course']}** *(Cut-off: {row['Cutoff']})*" for _, row in group.iterrows()]
+            st.markdown(f"🏫 **{uni}:** You can offer {', '.join(course_list)}.")
+    else:
+        st.write(
+            f"With **Aggregate {user_aggregate}**, none of the currently filtered programmes match your cut-off threshold yet. "
+            "Check the detailed guide below to see how close you are and what options to explore next!"
+        )
 
 tab1, tab2, tab3 = st.tabs([
-    f"✅ Qualified Courses ({len(eligible_df)})",
+    f"✅ Qualified Table ({len(eligible_df)})",
     f"📋 All Listed Cut-Offs ({len(filtered_df)})",
     "⚖️ Compare Programmes"
 ])
 
 with tab1:
     if not eligible_df.empty:
-        st.success(f"With **Aggregate {user_aggregate}**, you meet the cut-off for **{len(eligible_df)}** programme(s):")
         st.dataframe(
             eligible_df[["University", "Course", "Category", "Cutoff"]],
             hide_index=True,
@@ -178,7 +199,7 @@ with tab3:
     else:
         st.warning("No courses available to compare with current filters.")
 
-# --- FEATURE 3: GENERAL ADMISSION GUIDELINES EXPANDER (At the bottom) ---
+# --- FEATURE 3: GENERAL ADMISSION GUIDELINES EXPANDER ---
 st.markdown("---")
 with st.expander("ℹ️ General Ghanaian University Admission Requirements (2027 Guide)"):
     st.markdown("""
@@ -186,9 +207,3 @@ with st.expander("ℹ️ General Ghanaian University Admission Requirements (202
     * **Elective Subjects:** You need credit passes in **3 elective subjects** relevant to your desired course of study.
     * **Competitive Cut-offs:** Highly competitive programmes like Medicine, Law, and Computer Engineering often require stricter thresholds (lower aggregates like 6 to 8).
     """)
-
-
-
-
-
-
