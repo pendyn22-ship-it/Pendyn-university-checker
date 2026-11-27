@@ -1,117 +1,318 @@
 University,Course,Category,Cutoff
-University of Ghana,Bachelor of Laws (LLB),Law & Humanities,6
-University of Ghana,BSc Computer Engineering,Engineering & Technology,7
-University of Ghana,Bachelor of Medicine and Bachelor of Surgery,Health & Medical Sciences,7
-University of Ghana,BSc Computer Science,Engineering & Technology,7
-University of Ghana,BSc Information Technology,Engineering & Technology,8
-University of Ghana,BSc Administration (Accounting),Business & Administration,9
-University of Ghana,BSc Administration (Banking & Finance),Business & Administration,9
-University of Ghana,Bachelor of Dental Surgery,Health & Medical Sciences,9
-University of Ghana,Doctor of Pharmacy,Health & Medical Sciences,10
-University of Ghana,BSc Public Health,Health & Medical Sciences,9
-University of Ghana,BSc Actuarial Science,Business & Administration,9
-University of Ghana,BSc Biomedical Engineering,Engineering & Technology,7
-University of Ghana,BSc Medical Laboratory Sciences,Health & Medical Sciences,12
-University of Ghana,BSc Diagnostic Radiography,Health & Medical Sciences,13
-University of Ghana,BSc Physiotherapy,Health & Medical Sciences,15
-University of Ghana,BSc Nutrition and Dietetics,Health & Medical Sciences,15
-University of Ghana,BA Communication Studies,Law & Humanities,14
-University of Ghana,BA Economics,Business & Administration,14
-University of Ghana,BA Psychology,Law & Humanities,16
-University of Ghana,BA Political Science,Law & Humanities,16
-University of Ghana,BSc Agricultural Engineering,Engineering & Technology,16
-University of Ghana,BSc Biological Sciences,Science,13
-University of Ghana,BSc Mathematical Sciences,Science,15
-University of Ghana,BSc Agriculture Science,Agriculture & Environment,20
-University of Ghana,Bachelor of Arts,Law & Humanities,24
-KNUST,Human Biology (Medicine) (MBChB),Health & Medical Sciences,6
+University of Ghana (UG),Bachelor of Medicine / Surgery (MBChB),Health & Medical Sciences,6
+University of Ghana (UG),Bachelor of Dental Surgery (BDS),Health & Medical Sciences,7
+University of Ghana (UG),Doctor of Pharmacy (PharmD),Health & Medical Sciences,7
+University of Ghana (UG),BSc Medical Laboratory Sciences,Health & Medical Sciences,9
+University of Ghana (UG),BSc Nursing,Health & Medical Sciences,10
+University of Ghana (UG),BSc Midwifery,Health & Medical Sciences,11
+University of Ghana (UG),BSc Physiotherapy,Health & Medical Sciences,11
+University of Ghana (UG),BSc Radiography,Health & Medical Sciences,10
+University of Ghana (UG),BSc Dietetics,Health & Medical Sciences,12
+University of Ghana (UG),BSc Occupational Therapy,Health & Medical Sciences,12
+University of Ghana (UG),Bachelor of Laws (LLB),Law & Humanities,6
+University of Ghana (UG),BSc Administration (Accounting / Banking & Finance),Business & Administration,7
+University of Ghana (UG),BSc Administration (Marketing / HRM / Public Admin),Business & Administration,9
+University of Ghana (UG),BSc Computer Engineering,Engineering & Technology,7
+University of Ghana (UG),BSc Biomedical Engineering,Engineering & Technology,8
+University of Ghana (UG),BSc Agricultural Engineering,Engineering & Technology,12
+University of Ghana (UG),BSc Food Process Engineering,Engineering & Technology,11
+University of Ghana (UG),BSc Materials Science and Engineering,Engineering & Technology,11
+University of Ghana (UG),BSc Computer Science,Computing & IT,8
+University of Ghana (UG),BSc Information Technology,Computing & IT,9
+University of Ghana (UG),BSc Actuarial Science,Pure & Applied Sciences,9
+University of Ghana (UG),BSc Mathematical Sciences (Mathematics / Statistics),Pure & Applied Sciences,12
+University of Ghana (UG),BSc Biological Sciences,Pure & Applied Sciences,11
+University of Ghana (UG),"BSc Biochemistry, Cell and Molecular Biology",Pure & Applied Sciences,10
+University of Ghana (UG),BSc Earth Sciences (Geology / Applied Geophysics),Pure & Applied Sciences,13
+University of Ghana (UG),BSc Psychology,Social Sciences & Arts,11
+University of Ghana (UG),BA Economics,Social Sciences & Arts,9
+University of Ghana (UG),BA Political Science,Social Sciences & Arts,10
+University of Ghana (UG),BA Sociology / Social Work,Social Sciences & Arts,12
+University of Ghana (UG),BA Communication Studies / Information Studies,Social Sciences & Arts,12
+University of Ghana (UG),BSc Agriculture,Agriculture & Natural Resources,16
+University of Ghana (UG),BSc Family and Consumer Sciences,Agriculture & Natural Resources,15
+University of Ghana (UG),BEd Education (Arts / Science / Early Grade),Education,15
+KNUST,BSc Human Biology (Medicine),Health & Medical Sciences,6
+KNUST,Bachelor of Dental Surgery (BDS),Health & Medical Sciences,7
+KNUST,Doctor of Pharmacy (PharmD),Health & Medical Sciences,7
+KNUST,Doctor of Veterinary Medicine (DVM),Health & Medical Sciences,9
+KNUST,Doctor of Optometry,Health & Medical Sciences,8
+KNUST,BSc Medical Laboratory Technology,Health & Medical Sciences,8
+KNUST,BSc Nursing,Health & Medical Sciences,9
+KNUST,BSc Midwifery,Health & Medical Sciences,10
+KNUST,BSc Herbal Medicine,Health & Medical Sciences,12
+KNUST,BSc Physiotherapy and Sports Science,Health & Medical Sciences,11
 KNUST,BSc Computer Engineering,Engineering & Technology,6
-KNUST,BSc Electrical and Electronic Engineering,Engineering & Technology,6
-KNUST,BSc Biomedical Engineering,Engineering & Technology,6
-KNUST,BSc Petroleum Engineering,Engineering & Technology,6
-KNUST,BSc General Nursing,Health & Medical Sciences,6
-KNUST,Doctor of Pharmacy (Pharm D),Health & Medical Sciences,6
-KNUST,Bachelor of Dental Surgery (BDS),Health & Medical Sciences,6
-KNUST,Bachelor of Laws (LLB),Law & Humanities,6
+KNUST,BSc Electrical / Electronic Engineering,Engineering & Technology,7
 KNUST,BSc Mechanical Engineering,Engineering & Technology,7
 KNUST,BSc Civil Engineering,Engineering & Technology,7
 KNUST,BSc Aerospace Engineering,Engineering & Technology,7
-KNUST,BSc Chemical Engineering,Engineering & Technology,7
-KNUST,BSc Computer Science,Engineering & Technology,7
-KNUST,BSc Architecture,Engineering & Technology,7
-KNUST,BSc Medical Laboratory Science,Health & Medical Sciences,7
-KNUST,BSc Land Economy,Business & Administration,8
-KNUST,BA Political Studies,Law & Humanities,9
-KNUST,BSc Real Estate,Business & Administration,9
-KNUST,BSc Business Administration (Accounting / Finance),Business & Administration,9
-KNUST,BSc Business Administration (Human Resource Management),Business & Administration,12
-KNUST,BSc Information Technology,Engineering & Technology,12
-KNUST,BSc Agriculture,Agriculture & Environment,20
-University of Cape Coast,Bachelor of Medicine and Bachelor of Surgery,Health & Medical Sciences,8
-University of Cape Coast,Doctor of Pharmacy,Health & Medical Sciences,9
-University of Cape Coast,BSc Physician Assistantship,Health & Medical Sciences,11
-University of Cape Coast,BSc Medical Laboratory Science,Health & Medical Sciences,12
-University of Cape Coast,BSc Midwifery,Health & Medical Sciences,12
-University of Cape Coast,BSc Nursing,Health & Medical Sciences,12
-University of Cape Coast,BSc Computer Science,Engineering & Technology,15
-University of Cape Coast,BSc Information Technology,Engineering & Technology,14
-University of Cape Coast,BCom Accounting,Business & Administration,14
-University of Cape Coast,BCom Finance,Business & Administration,15
-University of Cape Coast,BA Communication Studies,Law & Humanities,17
-University of Cape Coast,BSc Geography and Regional Planning,Social Sciences,17
-University of Cape Coast,BSc Laboratory Technology,Science,17
-University of Cape Coast,Bachelor of Education (Arts / Science),Education,22
-UPSA,Bachelor of Laws (LLB),Law & Humanities,10
-UPSA,BSc Accounting,Business & Administration,14
-UPSA,BSc Actuarial Science,Business & Administration,12
-UPSA,BSc Banking and Finance,Business & Administration,14
-UPSA,BSc Marketing,Business & Administration,16
-UPSA,BSc Information Technology Management,Engineering & Technology,15
-UPSA,BSc Data Science and Analytics,Engineering & Technology,14
-UPSA,BSc Cyber Security,Engineering & Technology,14
-UDS,Bachelor of Laws (LLB),Law & Humanities,10
-UDS,BSc Pharmacy,Health & Medical Sciences,10
-UDS,Doctor of Medical Laboratory Science,Health & Medical Sciences,12
-UDS,BSc Nursing,Health & Medical Sciences,12
-UDS,BSc Civil Engineering,Engineering & Technology,14
-UDS,BSc Computer Science,Engineering & Technology,18
-UDS,BSc Business Administration,Business & Administration,18
-UENR,BSc Computer Science and Engineering,Engineering & Technology,18
-UENR,BSc Renewable Energy Engineering,Engineering & Technology,16
-UEW,Bachelor of Education (Mathematics),Education,20
-UEW,Bachelor of Education (Science),Education,22
-UEW,Bachelor of Education (Basic Education),Education,24
-UMaT,BSc Mining Engineering,Engineering & Technology,12
-UMaT,BSc Minerals Engineering,Engineering & Technology,14
-UMaT,BSc Petroleum Engineering,Engineering & Technology,10
-UMaT,BSc Geomatic Engineering,Engineering & Technology,15
-UMaT,BSc Environmental and Safety Engineering,Engineering & Technology,16
-UMaT,BSc Computer Science,Engineering & Technology,14
+KNUST,BSc Biomedical Engineering,Engineering & Technology,7
+KNUST,BSc Chemical Engineering,Engineering & Technology,8
+KNUST,BSc Petroleum Engineering,Engineering & Technology,7
+KNUST,BSc Geological Engineering,Engineering & Technology,9
+KNUST,BSc Geomatic Engineering,Engineering & Technology,10
+KNUST,BSc Telecommunications Engineering,Engineering & Technology,9
+KNUST,BSc Materials Engineering,Engineering & Technology,10
+KNUST,BSc Metallurgical Engineering,Engineering & Technology,11
+KNUST,BSc Agricultural Engineering,Engineering & Technology,12
+KNUST,BSc Automobile Engineering,Engineering & Technology,10
+KNUST,BSc Industrial Engineering,Engineering & Technology,10
+KNUST,BSc Marine Engineering,Engineering & Technology,9
+KNUST,BSc Architecture,Built Environment & Planning,7
+KNUST,BSc Construction Technology and Management (Building Technology),Built Environment & Planning,11
+KNUST,BSc Quantity Surveying and Construction Economics,Built Environment & Planning,10
+KNUST,BSc Land Economy,Built Environment & Planning,9
+KNUST,BSc Real Estate,Built Environment & Planning,11
+KNUST,BSc Development Planning,Built Environment & Planning,11
+KNUST,BSc Human Settlement Planning,Built Environment & Planning,12
+KNUST,BSc Computer Science,Computing & IT,7
+KNUST,BSc Information Technology,Computing & IT,8
+KNUST,BSc Actuarial Science,Pure & Applied Sciences,9
+KNUST,BSc Statistics / Mathematics,Pure & Applied Sciences,12
+KNUST,BSc Biochemistry,Pure & Applied Sciences,9
+KNUST,BSc Biological Sciences,Pure & Applied Sciences,10
+KNUST,BSc Chemistry / Physics,Pure & Applied Sciences,13
+KNUST,BSc Food Science and Technology,Pure & Applied Sciences,11
+KNUST,BSc Environmental Science,Pure & Applied Sciences,12
+KNUST,Bachelor of Laws (LLB),Law & Humanities,6
+KNUST,BSc Business Administration (Accounting / Finance / HRM / Marketing),Business & Administration,8
+KNUST,BSc Hospitality and Tourism Management,Business & Administration,12
+KNUST,BA Economics,Social Sciences & Arts,9
+KNUST,BA Communication Design (Graphic Design),Social Sciences & Arts,11
+KNUST,BFA Painting and Sculpture / Industrial Art,Social Sciences & Arts,15
+KNUST,BSc Agriculture / Agribusiness Management,Agriculture & Natural Resources,15
+KNUST,BSc Natural Resources Management,Agriculture & Natural Resources,14
+University of Cape Coast (UCC),Bachelor of Medicine / Surgery (MBChB),Health & Medical Sciences,6
+University of Cape Coast (UCC),Doctor of Pharmacy (PharmD),Health & Medical Sciences,7
+University of Cape Coast (UCC),Doctor of Optometry,Health & Medical Sciences,8
+University of Cape Coast (UCC),BSc Medical Laboratory Science,Health & Medical Sciences,9
+University of Cape Coast (UCC),BSc Nursing,Health & Medical Sciences,10
+University of Cape Coast (UCC),BSc Midwifery,Health & Medical Sciences,11
+University of Cape Coast (UCC),BSc Physician Assistant Studies,Health & Medical Sciences,9
+University of Cape Coast (UCC),BSc Diagnostic Imaging Technology / Sonography,Health & Medical Sciences,10
+University of Cape Coast (UCC),BSc Health Information Management,Health & Medical Sciences,12
+University of Cape Coast (UCC),Bachelor of Laws (LLB),Law & Humanities,7
+University of Cape Coast (UCC),Bachelor of Commerce (Accounting / Finance / HRM / Marketing),Business & Administration,10
+University of Cape Coast (UCC),BSc Computer Science,Computing & IT,10
+University of Cape Coast (UCC),BSc Information Technology,Computing & IT,11
+University of Cape Coast (UCC),BSc Actuarial Science,Pure & Applied Sciences,11
+University of Cape Coast (UCC),BSc Biomedical Sciences,Pure & Applied Sciences,10
+University of Cape Coast (UCC),BSc Forensic Science,Pure & Applied Sciences,11
+University of Cape Coast (UCC),BSc Fisheries and Aquatic Sciences,Agriculture & Natural Resources,16
+University of Cape Coast (UCC),BSc Agriculture / Agribusiness,Agriculture & Natural Resources,16
+University of Cape Coast (UCC),BEd Science / Mathematics / Computer Science,Education,14
+University of Cape Coast (UCC),BEd Arts / Social Sciences / Management / Accounting,Education,14
+University of Cape Coast (UCC),BEd Early Childhood / Primary / JHS Education,Education,16
+University of Cape Coast (UCC),BA Communication Studies / Social Sciences,Social Sciences & Arts,13
+"University of Education, Winneba (UEW)",BEd Mathematics Education,Education,15
+"University of Education, Winneba (UEW)",BEd Science Education (Biology / Chemistry / Physics),Education,15
+"University of Education, Winneba (UEW)",BEd Information and Communication Technology (ICT),Education,15
+"University of Education, Winneba (UEW)",BEd English / French / Ghanaian Languages,Education,16
+"University of Education, Winneba (UEW)",BEd Social Studies / History / Geography,Education,15
+"University of Education, Winneba (UEW)",BEd Early Childhood / Basic Education,Education,18
+"University of Education, Winneba (UEW)",BEd Special Education,Education,18
+"University of Education, Winneba (UEW)",BEd Physical Education and Sports Science,Education,18
+"University of Education, Winneba (UEW)",BSc Accounting / Banking and Finance,Business & Administration,14
+"University of Education, Winneba (UEW)",BBA Human Resource Management / Marketing,Business & Administration,15
+"University of Education, Winneba (UEW)",BA Journalism and Media Studies / Communication,Social Sciences & Arts,14
+"University of Education, Winneba (UEW)",BA Graphic Design / Music / Theatre Arts,Social Sciences & Arts,16
+University for Development Studies (UDS),Bachelor of Medicine / Surgery (MBChB),Health & Medical Sciences,7
+University for Development Studies (UDS),Doctor of Pharmacy (PharmD),Health & Medical Sciences,8
+University for Development Studies (UDS),BSc Nursing / Midwifery,Health & Medical Sciences,11
+University for Development Studies (UDS),BSc Medical Laboratory Science,Health & Medical Sciences,10
+University for Development Studies (UDS),BSc Community Nutrition / Dietetics,Health & Medical Sciences,13
+University for Development Studies (UDS),BSc Physician Assistantship,Health & Medical Sciences,10
+University for Development Studies (UDS),BSc Agricultural Engineering / Mechanical Engineering,Engineering & Technology,14
+University for Development Studies (UDS),BSc Computer Science / Information Technology,Computing & IT,13
+University for Development Studies (UDS),BSc Agriculture Technology / Agribusiness,Agriculture & Natural Resources,18
+University for Development Studies (UDS),BSc Veterinary Nursing,Agriculture & Natural Resources,16
+University for Development Studies (UDS),BEd Science / Mathematics / Social Science Education,Education,17
+UPSA,Bachelor of Laws (LLB),Law & Humanities,8
+UPSA,BSc Accounting,Business & Administration,10
+UPSA,BSc Banking and Finance,Business & Administration,11
+UPSA,BSc Actuarial Science,Business & Administration,11
+UPSA,BSc Business Administration,Business & Administration,12
+UPSA,BSc Marketing,Business & Administration,13
+UPSA,BSc Information Technology Management,Computing & IT,12
+UPSA,BA Public Relations Management,Social Sciences & Arts,13
+UPSA,BSc Logistics and Transport Management,Business & Administration,13
+UPSA,BSc Real Estate Management and Finance,Built Environment & Planning,13
+UMaT,BSc Mining Engineering,Engineering & Technology,9
+UMaT,BSc Petroleum Engineering,Engineering & Technology,8
+UMaT,BSc Computer Science and Engineering,Engineering & Technology,9
+UMaT,BSc Electrical and Electronic Engineering,Engineering & Technology,9
+UMaT,BSc Mechanical Engineering,Engineering & Technology,10
+UMaT,BSc Geological Engineering,Engineering & Technology,11
+UMaT,BSc Geomatic Engineering,Engineering & Technology,11
+UMaT,BSc Minerals Engineering,Engineering & Technology,11
+UMaT,BSc Environmental and Safety Engineering,Engineering & Technology,11
+UMaT,BSc Renewable Energy Engineering,Engineering & Technology,11
+UMaT,BSc Cyber Security,Computing & IT,10
+UMaT,BSc Logistics and Transport Management,Business & Administration,13
 UHAS,Bachelor of Medicine / Surgery (MBChB),Health & Medical Sciences,6
-UHAS,Bachelor of Nursing,Health & Medical Sciences,8
-UHAS,Doctor of Pharmacy,Health & Medical Sciences,8
-UHAS,Bachelor of Midwifery,Health & Medical Sciences,10
-UHAS,Bachelor of Medical Laboratory Science,Health & Medical Sciences,10
-UHAS,Bachelor of Physician Assistantship,Health & Medical Sciences,11
-UHAS,Bachelor of Public Health,Health & Medical Sciences,12
-GIMPA,Bachelor of Laws (LLB),Law & Humanities,10
-GIMPA,BSc Accounting,Business & Administration,14
-GIMPA,BSc Banking and Finance,Business & Administration,15
-GIMPA,BSc Marketing,Business & Administration,16
-GIMPA,BSc Computer Science,Engineering & Technology,15
-GIMPA,BA Public Administration,Law & Humanities,18
-GCTU,BSc Computer Engineering,Engineering & Technology,14
-GCTU,BSc Information Technology,Engineering & Technology,16
-GCTU,BSc Telecommunication Engineering,Engineering & Technology,16
-GCTU,BSc Computer Science,Engineering & Technology,15
-GCTU,BSc Business Administration,Business & Administration,18
-UESD,BSc Environmental Management,Agriculture & Environment,18
-UESD,BSc Sustainable Energy Engineering,Engineering & Technology,16
-UESD,BSc Water Resources Engineering,Engineering & Technology,16
-Accra Technical University,BTech Civil Engineering,Engineering & Technology,20
-Accra Technical University,BTech Electrical and Electronic Engineering,Engineering & Technology,20
-Accra Technical University,BTech Accounting with Computing,Business & Administration,22
-Kumasi Technical University,HND / BTech Mechanical Engineering,Engineering & Technology,22
-Kumasi Technical University,BTech Marketing,Business & Administration,24
-Takoradi Technical University,BTech Civil Engineering,Engineering & Technology,22
-Takoradi Technical University,BTech Procurement and Supply Chain,Business & Administration,24
+UHAS,Doctor of Pharmacy (PharmD),Health & Medical Sciences,8
+UHAS,BSc Nursing,Health & Medical Sciences,9
+UHAS,BSc Midwifery,Health & Medical Sciences,10
+UHAS,BSc Medical Laboratory Science,Health & Medical Sciences,9
+UHAS,BSc Physician Assistantship,Health & Medical Sciences,9
+UHAS,BSc Public Health,Health & Medical Sciences,12
+UHAS,BSc Dietetics / Nutrition,Health & Medical Sciences,12
+UHAS,BSc Physiotherapy,Health & Medical Sciences,11
+UHAS,BSc Diagnostic Imaging (Radiography),Health & Medical Sciences,10
+UHAS,BSc Speech and Language Therapy,Health & Medical Sciences,13
+UENR,BSc Computer Engineering,Engineering & Technology,10
+UENR,BSc Electrical and Electronic Engineering,Engineering & Technology,11
+UENR,BSc Mechanical Engineering,Engineering & Technology,11
+UENR,BSc Renewable Energy Engineering,Engineering & Technology,12
+UENR,BSc Civil and Environmental Engineering,Engineering & Technology,11
+UENR,BSc Petroleum Engineering,Engineering & Technology,10
+UENR,BSc Computer Science / Information Technology,Computing & IT,12
+UENR,BSc Nursing,Health & Medical Sciences,11
+UENR,BSc Biological Sciences / Medical Laboratory Science,Pure & Applied Sciences,12
+UENR,BSc Natural Resources Management / Forestry,Agriculture & Natural Resources,16
+UENR,BSc Agribusiness / Agriculture,Agriculture & Natural Resources,17
+GCTU,BSc Computer Science,Computing & IT,13
+GCTU,BSc Information Technology,Computing & IT,14
+GCTU,BSc Software Engineering,Computing & IT,13
+GCTU,BSc Cyber Security,Computing & IT,13
+GCTU,BSc Data Science and Analytics,Computing & IT,14
+GCTU,BSc Telecommunications Engineering,Engineering & Technology,14
+GCTU,BSc Computer Engineering,Engineering & Technology,13
+GCTU,BSc Accounting / Banking and Finance / Procurement,Business & Administration,15
+GIMPA,Bachelor of Laws (LLB),Law & Humanities,8
+GIMPA,BSc Computer Science,Computing & IT,13
+GIMPA,BSc Information and Communications Technology,Computing & IT,14
+GIMPA,BSc Business Administration (Accounting / Finance / HRM / Marketing),Business & Administration,14
+GIMPA,BSc Public Administration,Business & Administration,15
+GIMPA,BSc Economics,Social Sciences & Arts,14
+AAMUSTED (Kumasi & Mampong),BSc Construction Technology and Management (Building Technology),Built Environment & Planning,15
+AAMUSTED (Kumasi & Mampong),BSc Automotive Engineering / Mechanical Technology,Engineering & Technology,16
+AAMUSTED (Kumasi & Mampong),BSc Electrical and Electronics Engineering Technology,Engineering & Technology,15
+AAMUSTED (Kumasi & Mampong),BSc Information Technology,Computing & IT,15
+AAMUSTED (Kumasi & Mampong),BEd Technical / Vocational / Agriculture Education,Education,18
+AAMUSTED (Kumasi & Mampong),BBA Accounting / Management / Marketing,Business & Administration,16
+CKT-UTAS (Navrongo),BSc Computer Science / Information Technology,Computing & IT,15
+CKT-UTAS (Navrongo),BSc Actuarial Science / Statistics / Mathematics,Pure & Applied Sciences,16
+CKT-UTAS (Navrongo),BSc Applied Biology / Biochemistry / Chemistry,Pure & Applied Sciences,16
+CKT-UTAS (Navrongo),BSc Medical Laboratory Science,Health & Medical Sciences,12
+CKT-UTAS (Navrongo),BEd Science / Mathematics,Education,18
+SDD-UBIDS (Wa),Bachelor of Laws (LLB),Law & Humanities,10
+SDD-UBIDS (Wa),BSc Planning / Real Estate / Land Management,Built Environment & Planning,16
+SDD-UBIDS (Wa),BCom Accounting / Finance / HRM,Business & Administration,16
+SDD-UBIDS (Wa),BA Integrated Development Studies,Social Sciences & Arts,17
+SDD-UBIDS (Wa),BEd Social Sciences / Business Education,Education,18
+UESD (Somanya),BSc Environmental Sustainability / Water Resources,Pure & Applied Sciences,16
+UESD (Somanya),BSc Energy Sustainability / Sustainable Development,Engineering & Technology,16
+UESD (Somanya),BSc Sustainable Agriculture / Agribusiness,Agriculture & Natural Resources,17
+UniMAC (GIJ / NAFTI / GIL),BA Journalism / Public Relations / Communication Studies,Social Sciences & Arts,12
+UniMAC (GIJ / NAFTI / GIL),BFA Film Directing / Television Production / Animation,Social Sciences & Arts,15
+UniMAC (GIJ / NAFTI / GIL),BA Translation (French / English / Arabic / Spanish),Social Sciences & Arts,16
+Accra Technical University (ATU),BTech Building Technology,Built Environment & Planning,18
+Accra Technical University (ATU),BTech Civil Engineering,Engineering & Technology,17
+Accra Technical University (ATU),BTech Electrical / Electronic Engineering,Engineering & Technology,17
+Accra Technical University (ATU),BTech Mechanical Engineering,Engineering & Technology,18
+Accra Technical University (ATU),BTech Computer Science / Information Technology,Computing & IT,17
+Accra Technical University (ATU),BTech Medical Laboratory Technology,Health & Medical Sciences,14
+Accra Technical University (ATU),BTech Science Laboratory Technology,Pure & Applied Sciences,18
+Accra Technical University (ATU),BTech Accounting / Banking & Finance / Procurement,Business & Administration,18
+Accra Technical University (ATU),BTech Hospitality Management / Fashion Design,Business & Administration,20
+Kumasi Technical University (KsTU),BTech Building Technology,Built Environment & Planning,18
+Kumasi Technical University (KsTU),BTech Architectural Technology,Built Environment & Planning,17
+Kumasi Technical University (KsTU),BEng Civil / Mechanical / Electrical Engineering,Engineering & Technology,16
+Kumasi Technical University (KsTU),BTech Computer Technology / Data Science,Computing & IT,17
+Kumasi Technical University (KsTU),BTech Medical Laboratory Technology / Pharmaceutical Sciences,Health & Medical Sciences,14
+Kumasi Technical University (KsTU),BSc Accountancy with Computing / Banking & Finance,Business & Administration,18
+Kumasi Technical University (KsTU),BTech Fashion Design and Textiles / Hospitality,Business & Administration,20
+Takoradi Technical University (TTU),BTech Building Technology,Built Environment & Planning,18
+Takoradi Technical University (TTU),BTech Civil / Electrical / Mechanical / Petroleum Engineering,Engineering & Technology,17
+Takoradi Technical University (TTU),BTech Information Technology / Computer Science,Computing & IT,18
+Takoradi Technical University (TTU),BTech Graphic Design / Industrial Art / Fashion,Social Sciences & Arts,20
+Takoradi Technical University (TTU),BTech Accounting / Procurement / Secretaryship,Business & Administration,19
+Koforidua Technical University (KTU),BTech Building Technology / Civil Engineering,Built Environment & Planning,18
+Koforidua Technical University (KTU),BTech Automotive / Electrical / Mechanical / Renewable Energy Engineering,Engineering & Technology,18
+Koforidua Technical University (KTU),BTech Computer Science / Network Management,Computing & IT,18
+Koforidua Technical University (KTU),BTech Medical Laboratory Science,Health & Medical Sciences,15
+Koforidua Technical University (KTU),BTech Accountancy / Marketing / Procurement,Business & Administration,19
+Ho Technical University (HTU),BTech Building Technology / Civil Engineering,Built Environment & Planning,19
+Ho Technical University (HTU),BTech Agricultural / Electrical / Mechanical Engineering,Engineering & Technology,19
+Ho Technical University (HTU),BTech Computer Science / ICT,Computing & IT,19
+Ho Technical University (HTU),BTech Hospitality and Tourism Management,Business & Administration,20
+Ho Technical University (HTU),BTech Accounting / Finance / Marketing,Business & Administration,20
+Cape Coast Technical University (CCTU),BTech Building Technology / Civil Engineering,Built Environment & Planning,19
+Cape Coast Technical University (CCTU),BTech Mechanical / Electrical / Renewable Energy Engineering,Engineering & Technology,19
+Cape Coast Technical University (CCTU),BTech Computer Science / Information Technology,Computing & IT,19
+Cape Coast Technical University (CCTU),BTech Accounting / Marketing / Tourism Management,Business & Administration,20
+Sunyani Technical University (STU),BTech Building Technology / Civil Engineering,Built Environment & Planning,19
+Sunyani Technical University (STU),BTech Electrical / Mechanical Engineering,Engineering & Technology,19
+Sunyani Technical University (STU),BTech Computer Science / ICT,Computing & IT,19
+Sunyani Technical University (STU),BTech Hospitality Management / Accounting / Procurement,Business & Administration,20
+Tamale Technical University (TaTU),BTech Building Technology / Civil Engineering,Built Environment & Planning,20
+Tamale Technical University (TaTU),BTech Agricultural / Electrical / Mechanical Engineering,Engineering & Technology,20
+Tamale Technical University (TaTU),BTech Computer Science / ICT,Computing & IT,20
+Tamale Technical University (TaTU),BTech Accounting / Secretaryship / Hospitality,Business & Administration,21
+Bolgatanga Technical University (BTU),BTech Building Technology / Civil Engineering,Built Environment & Planning,21
+Bolgatanga Technical University (BTU),BTech Ecological Agriculture / Agricultural Engineering,Agriculture & Natural Resources,21
+Bolgatanga Technical University (BTU),BTech Medical Laboratory Technology,Health & Medical Sciences,17
+Bolgatanga Technical University (BTU),BTech Accounting / Procurement / Hospitality,Business & Administration,22
+Dr. Hilla Limann Technical University (Wa TU),BTech Building Technology / Civil Engineering,Built Environment & Planning,21
+Dr. Hilla Limann Technical University (Wa TU),BTech Mechanical / Electrical Engineering,Engineering & Technology,21
+Dr. Hilla Limann Technical University (Wa TU),BTech ICT / Accounting / Secretaryship,Business & Administration,22
+Regional Maritime University (RMU),BSc Marine Engineering,Engineering & Technology,14
+Regional Maritime University (RMU),BSc Nautical Science,Engineering & Technology,14
+Regional Maritime University (RMU),BSc Electrical / Electronic Engineering,Engineering & Technology,15
+Regional Maritime University (RMU),BSc Computer Engineering / Information Technology,Computing & IT,16
+Regional Maritime University (RMU),BSc Ports and Shipping Administration / Logistics,Business & Administration,16
+Ashesi University,BSc Computer Science,Computing & IT,10
+Ashesi University,BSc Management Information Systems,Computing & IT,11
+Ashesi University,BSc Computer Engineering / Electrical Engineering / Mechanical Engineering,Engineering & Technology,10
+Ashesi University,BSc Business Administration,Business & Administration,11
+Ashesi University,BSc Economics,Social Sciences & Arts,11
+Central University,Doctor of Pharmacy (PharmD),Health & Medical Sciences,11
+Central University,BSc Nursing / Physician Assistantship,Health & Medical Sciences,14
+Central University,BSc Architecture,Built Environment & Planning,15
+Central University,BSc Civil Engineering / Information Technology / Computer Science,Engineering & Technology,16
+Central University,Bachelor of Laws (LLB),Law & Humanities,12
+Central University,BSc Accounting / Banking & Finance / HRM / Marketing,Business & Administration,18
+Valley View University,BSc Nursing / Midwifery,Health & Medical Sciences,15
+Valley View University,BSc Computer Science / Information Technology,Computing & IT,18
+Valley View University,BBA Accounting / Banking & Finance / Management,Business & Administration,20
+Valley View University,BEd Education,Education,22
+Pentecost University,BSc Nursing / Midwifery / Physician Assistantship,Health & Medical Sciences,15
+Pentecost University,BSc Information Technology / Computer Science,Computing & IT,18
+Pentecost University,BSc Construction Technology and Engineering,Built Environment & Planning,18
+Pentecost University,BCom Accounting / Finance / Logistics / HRM,Business & Administration,20
+"Presbyterian University, Ghana",BSc Nursing / Midwifery / Physician Assistantship,Health & Medical Sciences,15
+"Presbyterian University, Ghana",BSc Computer Engineering / ICT / Mathematics,Computing & IT,18
+"Presbyterian University, Ghana",BSc Agribusiness / Environmental and Natural Resources,Agriculture & Natural Resources,20
+"Presbyterian University, Ghana",BSc Business Administration / Accounting,Business & Administration,20
+Methodist University Ghana,BSc Nursing / Information Technology,Health & Medical Sciences,16
+Methodist University Ghana,BBA Accounting / Banking & Finance / HRM / Marketing,Business & Administration,20
+Methodist University Ghana,BA Psychology / Communication Studies,Social Sciences & Arts,20
+Catholic University of Ghana (Fiapre),BSc Nursing / Midwifery / Public Health,Health & Medical Sciences,15
+Catholic University of Ghana (Fiapre),BSc Computer Science / Information Technology,Computing & IT,18
+Catholic University of Ghana (Fiapre),BSc Economics and Business Administration,Business & Administration,20
+All Nations University,BSc Biomedical Engineering / Oil & Gas Engineering,Engineering & Technology,16
+All Nations University,BSc Computer Science / Electronics & Communications,Computing & IT,18
+All Nations University,BSc Nursing,Health & Medical Sciences,16
+All Nations University,BBA Accounting / Banking & Finance / HRM,Business & Administration,20
+Academic City University,BSc Computer Science / Artificial Intelligence / Robotics,Computing & IT,14
+Academic City University,BSc Biomedical Engineering / Electrical & Mechanical Engineering,Engineering & Technology,14
+Academic City University,BBA Business Administration / Journalism & Mass Communication,Business & Administration,16
+Wisconsin International University College,BSc Nursing / Midwifery,Health & Medical Sciences,16
+Wisconsin International University College,Bachelor of Laws (LLB),Law & Humanities,14
+Wisconsin International University College,BSc Computer Science / Information Technology,Computing & IT,18
+Wisconsin International University College,BA Business Studies / Communication Studies,Business & Administration,20
+Garden City University College,BSc Nursing / Midwifery / Physician Assistantship / Medical Lab,Health & Medical Sciences,16
+Garden City University College,BSc Computer Science / Information Technology,Computing & IT,19
+Garden City University College,BBA Accounting / Banking & Finance / Marketing,Business & Administration,21
+Kings University College,Bachelor of Laws (LLB),Law & Humanities,14
+Kings University College,BSc Computer Science / Business Administration,Business & Administration,20
+MountCrest University College,Bachelor of Laws (LLB),Law & Humanities,14
+MountCrest University College,BSc Health Services Management,Health & Medical Sciences,18
+Lancaster University Ghana,BSc Computer Science / Accounting & Finance / Law (LLB),Business & Administration,15
+Regent University College of Science and Technology,BSc Computer Science / Engineering / Accounting,Computing & IT,19
+Data Link Institute of Business and Technology,BSc Computer Science / Business Administration,Computing & IT,20
+Knutsford University College,BSc Nursing / Computer Science / Business Administration,Business & Administration,20
+"Islamic University College, Ghana",BBA Accounting / Banking & Finance / Communication Studies,Business & Administration,21
+Perez University College,BSc Business Administration / Communication Studies,Business & Administration,22
