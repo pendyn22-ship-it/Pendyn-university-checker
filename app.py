@@ -4,6 +4,18 @@ import pandas as pd
 # Page Configuration
 st.set_page_config(page_title="Pendyn's University Checker", page_icon="🎓", layout="centered")
 
+# Custom UI Styling
+st.markdown("""
+    <style>
+    .main {
+        background-color: #f8f9fa;
+    }
+    .stTextInput, .stSelectbox, .stNumberInput {
+        background-color: #ffffff;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("🎓 Pendyn's University Checker 2027")
 st.markdown("Find out your eligibility across all Ghanaian public, technical, and specialized universities based on your WASSCE aggregate.")
 
@@ -18,28 +30,29 @@ except FileNotFoundError:
     st.error("Error: 'cutoffs.csv' file not found. Please make sure it is uploaded in your repository.")
     st.stop()
 
-# Sidebar / Filters
-st.sidebar.header("🔍 Filter Options")
+# Main Page Filters and Search layout
+st.markdown("---")
+st.subheader("🔍 Search & Filter Options")
 
-# University Filter
-universities = ["All Universities"] + sorted(df["University"].unique().tolist())
-selected_uni = st.sidebar.selectbox("Filter by University", universities)
+col1, col2 = st.columns(2)
+with col1:
+    universities = ["All Universities"] + sorted(df["University"].unique().tolist())
+    selected_uni = st.selectbox("Filter by University", universities)
 
-# Field / Category Filter
-categories = ["All Fields"] + sorted(df["Category"].unique().tolist())
-selected_cat = st.sidebar.selectbox("Filter by Field of Study", categories)
+with col2:
+    categories = ["All Fields"] + sorted(df["Category"].unique().tolist())
+    selected_cat = st.selectbox("Filter by Field of Study", categories)
+
+search_query = st.text_input("Search Course (e.g., Computer Science, Architecture, Accounting)")
 
 # User Input: WASSCE Aggregate
 st.markdown("### 🎯 Enter Your Aggregate")
 user_aggregate = st.number_input("Your Best 6 Subjects Aggregate", min_value=6, max_value=36, value=10, step=1)
 
-# Search Bar Input
-search_query = st.text_input("Search Course (e.g., Computer Science, Architecture, Accounting)")
-
 # Filtering Logic
 filtered_df = df.copy()
 
-# 1. Apply Search Query with Keyword Splitting (Fixes multi-word and partial search issues)
+# 1. Apply Search Query with Keyword Splitting (Fixes multi-word search issues)
 if search_query:
     keywords = search_query.strip().split()
     query_filter = filtered_df.copy()
