@@ -77,7 +77,7 @@ with st.container():
     with col_agg:
         user_aggregate = st.number_input("🎯 Your Best 6 WASSCE Aggregate (6 to 36)", min_value=6, max_value=36, value=12, step=1)
     with col_core:
-        # Feature 2: Core Subject Credit Check
+        # Core Subject Credit Check
         has_core_issue = st.selectbox(
             "📋 Core Subjects Status (English, Maths, Science, Social)",
             ["All A1–C6 (Credit Passes)", "I have D7, E8, or F9 in a Core Subject"]
@@ -96,7 +96,7 @@ with st.container():
         
     st.markdown('</div>', unsafe_allow_html=True)
 
-# --- FEATURE 2: CORE SUBJECT CREDIT ALERT ---
+# --- CORE SUBJECT CREDIT ALERT ---
 if has_core_issue == "I have D7, E8, or F9 in a Core Subject":
     st.error(
         "⚠️ **Core Subject Alert (D7 / E8 / F9 Detected):** Most public universities (UG, KNUST, UCC, UHAS, UPSA) strictly require **A1–C6 credit passes** in English Language, Core Mathematics, Integrated Science, and Social Studies for regular degree admission—even if your overall aggregate is strong. "
@@ -106,7 +106,7 @@ if has_core_issue == "I have D7, E8, or F9 in a Core Subject":
 # --- FILTERING LOGIC ---
 filtered_df = df.copy()
 
-# 1. Multi-keyword search (OR logic so partial multi-word searches match flexibly)
+# 1. Multi-keyword search
 if search_query:
     keywords = search_query.strip().split()
     pattern = "|".join(keywords)
@@ -123,18 +123,28 @@ if selected_cat != "All Fields":
 # 4. Direct Eligibility (user_aggregate <= Cutoff)
 qualified_df = filtered_df[user_aggregate <= filtered_df["Cutoff"]].sort_values(by=["Cutoff", "University"])
 
-# 5. Feature 3: Close Call / Fee-Paying Alternatives (Missed cutoff by 1 to 3 points)
+# 5. Close Call / Fee-Paying Alternatives (Missed cutoff by 1 to 3 points)
 close_call_df = filtered_df[
     (filtered_df["Cutoff"] < user_aggregate) & 
     (filtered_df["Cutoff"] >= user_aggregate - 3)
 ].sort_values(by=["Cutoff", "University"])
 
-# --- METRICS SUMMARY ---
+# --- RESTORED: METRICS & AI ADVISOR SUMMARY ---
 st.markdown("### 2️⃣ Your Results & AI Advisor Summary")
 m1, m2, m3 = st.columns(3)
 m1.metric("🎯 Your Aggregate", user_aggregate)
 m2.metric("✅ Qualified Courses", len(qualified_df))
 m3.metric("🏫 Matching Schools", qualified_df["University"].nunique() if not qualified_df.empty else 0)
+
+# AI Advisor Guidance Box based on aggregate and performance
+if user_aggregate <= 9:
+    st.info("🤖 **Pendyn's AI Advisor:** Excellent aggregate! You are in the top bracket for highly competitive programs like Medicine, Engineering, Law, and Pharmacy across top-tier universities.")
+elif user_aggregate <= 15:
+    st.info("🤖 **Pendyn's AI Advisor:** Very solid aggregate! You qualify for a wide range of standard degree programs across public universities and technical universities.")
+elif user_aggregate <= 24:
+    st.info("🤖 **Pendyn's AI Advisor:** Good effort! Focus on programs with slightly higher cutoff thresholds, Technical University BTech degrees, or check the close-call fee-paying options below.")
+else:
+    st.info("🤖 **Pendyn's AI Advisor:** We recommend exploring Diploma and HND programs at Technical Universities or private tertiary colleges, which provide fantastic pathways to a full degree later.")
 
 # --- DIRECT QUALIFIED COURSES ---
 st.markdown("#### ✅ Directly Qualified Programs")
@@ -145,7 +155,7 @@ if not qualified_df.empty:
         use_container_width=True
     )
     
-    # --- FEATURE 4: DOWNLOADABLE RESULTS SLIP ---
+    # Downloadable Results Slip
     csv_export = qualified_df[["University", "Course", "Category", "Cutoff"]].to_csv(index=False).encode("utf-8")
     st.download_button(
         label="📥 Download My Qualified Courses Slip (CSV)",
@@ -156,7 +166,7 @@ if not qualified_df.empty:
 else:
     st.warning("No regular courses matched your exact aggregate and filters. Check the 'Close Call' options below or widen your filters!")
 
-# --- FEATURE 3: CLOSE CALL & FEE-PAYING ALTERNATIVES ---
+# --- CLOSE CALL & FEE-PAYING ALTERNATIVES ---
 if not close_call_df.empty:
     st.markdown("---")
     st.markdown("#### ⚡ Close Calls & Fee-Paying / Parallel Alternatives (1–3 Points Away)")
