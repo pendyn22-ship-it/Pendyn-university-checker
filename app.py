@@ -1,241 +1,169 @@
-import io
-import pandas as pd
 import streamlit as st
+import pandas as pd
 
-st.set_page_config(
-    page_title="Pendyn's University Checker",
-    page_icon="🎓",
-    layout="centered"
-)
+# Page Configuration
+st.set_page_config(page_title="Pendyn's University Checker 2027", page_icon="🎓", layout="centered")
 
-# --- CUSTOM HERO BANNER ---
+# Custom CSS for Card Layout & Green Styling
 st.markdown("""
-    <div style="
-        background: linear-gradient(135deg, #006B3F 0%, #004D2C 100%);
-        padding: 24px 20px;
-        border-radius: 14px;
+    <style>
+    .main {
+        background-color: #f4f7f5;
+    }
+    .header-banner {
+        background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
         color: white;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    ">
-        <div style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #FCD116; margin-bottom: 6px;">
-            🇬🇭 2027 WASSCE Admissions Guide
-        </div>
-        <h1 style="margin: 0; font-size: 28px; font-weight: 800; color: #FFFFFF; line-height: 1.2;">
-            🎓 Pendyn's University Checker
-        </h1>
-        <p style="margin: 8px 0 0 0; font-size: 15px; color: #E2E8F0; line-height: 1.4;">
-            Calculate your exact Best-6 aggregate, compare Ghanaian university cut-off points, and get instant admission recommendations.
-        </p>
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-bottom: 1.2rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+    .header-banner h1 {
+        color: white !important;
+        margin-bottom: 0.3rem;
+        font-size: 1.8rem;
+    }
+    .header-banner p {
+        color: #e8f5e9;
+        margin: 0;
+        font-size: 0.95rem;
+    }
+    .filter-card {
+        background-color: #ffffff;
+        padding: 1.2rem;
+        border-radius: 12px;
+        border-left: 5px solid #2e7d32;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.2rem;
+    }
+    .stDownloadButton > button {
+        background-color: #2e7d32 !important;
+        color: white !important;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        padding: 0.5rem 1.2rem;
+    }
+    .stDownloadButton > button:hover {
+        background-color: #1b5e20 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Header Banner
+st.markdown("""
+    <div class="header-banner">
+        <h1>🎓 Pendyn's University Checker 2027</h1>
+        <p>Check your eligibility across 46 Ghanaian public, technical, and private universities based on your WASSCE results.</p>
     </div>
 """, unsafe_allow_html=True)
 
+# Load Dataset
 @st.cache_data
 def load_data():
     return pd.read_csv("cutoffs.csv")
 
 try:
     df = load_data()
-except Exception as e:
-    st.error(f"Could not load cutoffs.csv. Error: {e}")
+except FileNotFoundError:
+    st.error("Error: 'cutoffs.csv' file not found. Please make sure it is uploaded in your repository.")
     st.stop()
 
-# --- FEATURE 1: WASSCE GRADE CALCULATOR ---
-with st.expander("📝 Need help finding your aggregate? Use the WASSCE Calculator"):
-    st.write("Select your grades for your core subjects and best electives to automatically compute your aggregate.")
+# --- INPUT & FILTER CARD ---
+with st.container():
+    st.markdown('<div class="filter-card">', unsafe_allow_html=True)
     
-    grade_points = {"A1": 1, "B2": 2, "B3": 3, "C4": 4, "C5": 5, "C6": 6, "D7": 7, "E8": 8, "F9": 9}
-    grade_options = list(grade_points.keys())
+    col_agg, col_core = st.columns([1, 1])
+    with col_agg:
+        user_aggregate = st.number_input("🎯 Your Best 6 WASSCE Aggregate (6 to 36)", min_value=6, max_value=36, value=12, step=1)
+    with col_core:
+        # Feature 2: Core Subject Credit Check
+        has_core_issue = st.selectbox(
+            "📋 Core Subjects Status (English, Maths, Science, Social)",
+            ["All A1–C6 (Credit Passes)", "I have D7, E8, or F9 in a Core Subject"]
+        )
 
-    col_c1, col_c2 = st.columns(2)
-    with col_c1:
-        eng = st.selectbox("Core English", grade_options, index=2, key="calc_eng")
-        math = st.selectbox("Core Mathematics", grade_options, index=2, key="calc_math")
-    with col_c2:
-        sc = st.selectbox("Integrated Science", grade_options, index=2, key="calc_sc")
-        soc = st.selectbox("Social Studies", grade_options, index=2, key="calc_soc")
-
-    st.write("Enter your 3 Best Electives:")
-    col_e1, col_e2, col_e3 = st.columns(3)
-    with col_e1:
-        e1 = st.selectbox("Elective 1", grade_options, index=2, key="calc_e1")
-    with col_e2:
-        e2 = st.selectbox("Elective 2", grade_options, index=2, key="calc_e2")
-    with col_e3:
-        e3 = st.selectbox("Elective 3", grade_options, index=2, key="calc_e3")
-
-    core_science_val = min(grade_points[sc], grade_points[soc])
-    calc_aggregate = grade_points[eng] + grade_points[math] + core_science_val + grade_points[e1] + grade_points[e2] + grade_points[e3]
-    
-    st.info(f"✨ Calculated Best-6 Aggregate: **{calc_aggregate}**")
-
-# --- MAIN CONTROLS ---
-with st.container(border=True):
-    st.subheader("1️⃣ Enter Aggregate & Filter")
-    
-    user_aggregate = st.number_input(
-        "Your Best 6 WASSCE Aggregate (6 to 36)",
-        min_value=6,
-        max_value=36,
-        value=int(calc_aggregate) if 'calc_aggregate' in locals() else 12,
-        step=1,
-        key="main_user_aggregate_input"
-    )
-
-    search_query = st.text_input(
-        "🔍 Search Course Name (Optional)",
-        placeholder="e.g., Computer, Nursing, Law, Business...",
-        key="main_search_query_input"
-    )
+    search_query = st.text_input("🔎 Search Course Name (Optional)", placeholder="e.g., Computer Science, Nursing, Building Technology")
 
     col1, col2 = st.columns(2)
     with col1:
-        selected_uni = st.selectbox(
-            "Filter by University",
-            ["All Universities"] + sorted(list(df["University"].unique())),
-            key="main_uni_filter"
-        )
-    with col2:
-        selected_cat = st.selectbox(
-            "Filter by Field of Study",
-            ["All Fields"] + sorted(list(df["Category"].unique())),
-            key="main_cat_filter"
-        )
+        universities = ["All Universities"] + sorted(df["University"].unique().tolist())
+        selected_uni = st.selectbox("🏫 Filter by University", universities)
 
-# Filter Logic
+    with col2:
+        categories = ["All Fields"] + sorted(df["Category"].unique().tolist())
+        selected_cat = st.selectbox("📚 Filter by Field of Study", categories)
+        
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# --- FEATURE 2: CORE SUBJECT CREDIT ALERT ---
+if has_core_issue == "I have D7, E8, or F9 in a Core Subject":
+    st.error(
+        "⚠️ **Core Subject Alert (D7 / E8 / F9 Detected):** Most public universities (UG, KNUST, UCC, UHAS, UPSA) strictly require **A1–C6 credit passes** in English Language, Core Mathematics, Integrated Science, and Social Studies for regular degree admission—even if your overall aggregate is strong. "
+        "Consider **Diploma / HND pathways at Technical Universities**, **Certificate-to-Degree bridging programs**, or **Private Universities** that accept D7 in specific non-core electives."
+    )
+
+# --- FILTERING LOGIC ---
 filtered_df = df.copy()
+
+# 1. Multi-keyword search (OR logic so partial multi-word searches match flexibly)
+if search_query:
+    keywords = search_query.strip().split()
+    pattern = "|".join(keywords)
+    filtered_df = filtered_df[filtered_df["Course"].str.contains(pattern, case=False, na=False)]
+
+# 2. University filter
 if selected_uni != "All Universities":
     filtered_df = filtered_df[filtered_df["University"] == selected_uni]
+
+# 3. Field of study filter
 if selected_cat != "All Fields":
     filtered_df = filtered_df[filtered_df["Category"] == selected_cat]
-if search_query:
-    filtered_df = filtered_df[filtered_df["Course"].str.contains(search_query, case=False, na=False)]
 
-eligible_df = filtered_df[filtered_df["Cutoff"] >= user_aggregate].sort_values(by="Cutoff")
+# 4. Direct Eligibility (user_aggregate <= Cutoff)
+qualified_df = filtered_df[user_aggregate <= filtered_df["Cutoff"]].sort_values(by=["Cutoff", "University"])
 
-# --- QUICK METRICS DASHBOARD ---
+# 5. Feature 3: Close Call / Fee-Paying Alternatives (Missed cutoff by 1 to 3 points)
+close_call_df = filtered_df[
+    (filtered_df["Cutoff"] < user_aggregate) & 
+    (filtered_df["Cutoff"] >= user_aggregate - 3)
+].sort_values(by=["Cutoff", "University"])
+
+# --- METRICS SUMMARY ---
+st.markdown("### 2️⃣ Your Results & AI Advisor Summary")
 m1, m2, m3 = st.columns(3)
-m1.metric("🎯 Your Aggregate", f"{user_aggregate}")
-m2.metric("✅ Qualified Courses", f"{len(eligible_df)}")
-m3.metric("🏫 Matching Schools", f"{eligible_df['University'].nunique()}")
+m1.metric("🎯 Your Aggregate", user_aggregate)
+m2.metric("✅ Qualified Courses", len(qualified_df))
+m3.metric("🏫 Matching Schools", qualified_df["University"].nunique() if not qualified_df.empty else 0)
 
-st.subheader("2️⃣ Your Results & AI Advisor Summary")
-
-# --- CONVERSATIONAL ADVISOR SUMMARY ---
-with st.container(border=True):
-    st.markdown(f"### 💬 Advisor Response for Aggregate {user_aggregate}")
-    if not eligible_df.empty:
-        num_unis = eligible_df["University"].nunique()
-        num_courses = len(eligible_df)
-        
-        st.write(
-            f"Based on your **Aggregate {user_aggregate}**, you qualify for **{num_courses} programme(s)** "
-            f"across **{num_unis} institution(s)** in your current search! Here is a breakdown of where you can apply:"
-        )
-        
-        for uni, group in eligible_df.groupby("University"):
-            course_list = [f"**{row['Course']}** *(Cut-off: {row['Cutoff']})*" for _, row in group.iterrows()]
-            st.markdown(f"🏫 **{uni}:** You can offer {', '.join(course_list)}.")
-    else:
-        st.write(
-            f"With **Aggregate {user_aggregate}**, none of the currently filtered programmes match your cut-off threshold yet. "
-            "Check the detailed guide below to see how close you are and what options to explore next!"
-        )
-
-tab1, tab2, tab3 = st.tabs([
-    f"✅ Qualified Table ({len(eligible_df)})",
-    f"📋 All Listed Cut-Offs ({len(filtered_df)})",
-    "⚖️ Compare Programmes"
-])
-
-with tab1:
-    if not eligible_df.empty:
-        st.dataframe(
-            eligible_df[["University", "Course", "Category", "Cutoff"]],
-            hide_index=True,
-            width="stretch"
-        )
-        
-        csv_data = eligible_df.to_csv(index=False).encode('utf-8')
-        st.download_button(
-            label="📥 Download Qualified Courses (CSV)",
-            data=csv_data,
-            file_name=f"wassce_eligible_aggregate_{user_aggregate}.csv",
-            mime="text/csv",
-            key="download_qualified_csv_btn"
-        )
-    else:
-        st.warning(f"### Why aren't any courses showing for Aggregate {user_aggregate}?")
-        
-        if filtered_df.empty:
-            st.info(
-                f"🔍 **No programmes matched your search or filter combination** "
-                f"(*University: {selected_uni}*, *Field: {selected_cat}*, *Search: '{search_query}'*).\n\n"
-                "**How to fix this:** Clear the search bar or switch both dropdowns back to **'All Universities'** and **'All Fields'**."
-            )
-        else:
-            best_cutoff_here = int(filtered_df["Cutoff"].max())
-            closest_courses = filtered_df[filtered_df["Cutoff"] == best_cutoff_here]["Course"].tolist()
-            
-            st.info(
-                f"📊 **How WASSCE Cut-Offs Work:** In WASSCE grading, **lower numbers mean stronger grades** "
-                f"(Aggregate 6 is the highest score, while 36 is the lowest). To qualify, your aggregate must be "
-                f"**equal to or lower than** a programme's cut-off point.\n\n"
-                f"For your current selection, the most flexible cut-off available is **Aggregate {best_cutoff_here}** "
-                f"(for *{', '.join(closest_courses[:2])}*)—meaning your score of **{user_aggregate}** is currently "
-                f"**{user_aggregate - best_cutoff_here} point(s) above** that threshold."
-            )
-            
-            st.markdown("""
-            **💡 What you can do next:**
-            * **Broaden your search:** Switch University or Field of Study to **'All'**—another university may offer the same course with a higher cut-off.
-            * **Check Tab 2 ('All Listed Cut-Offs'):** View the exact cut-off numbers for every listed programme so you can see how close you are.
-            * **Explore alternative pathways:** Consider related programmes, fee-paying/diploma top-up routes, or resitting one or two subjects via **NOVDEC** to lower your aggregate.
-            """)
-
-with tab2:
-    st.write("Compare all programmes matching your filters:")
-    display_all = filtered_df.copy()
-    display_all["Status"] = display_all["Cutoff"].apply(
-        lambda c: "✅ Eligible" if c >= user_aggregate else "❌ Above Cut-off"
-    )
+# --- DIRECT QUALIFIED COURSES ---
+st.markdown("#### ✅ Directly Qualified Programs")
+if not qualified_df.empty:
+    st.success(f"Great news! You meet the regular cutoff for **{len(qualified_df)}** program(s).")
     st.dataframe(
-        display_all[["University", "Course", "Cutoff", "Status"]].sort_values(by="Cutoff"),
-        hide_index=True,
-        width="stretch"
+        qualified_df[["University", "Course", "Category", "Cutoff"]].reset_index(drop=True),
+        use_container_width=True
     )
+    
+    # --- FEATURE 4: DOWNLOADABLE RESULTS SLIP ---
+    csv_export = qualified_df[["University", "Course", "Category", "Cutoff"]].to_csv(index=False).encode("utf-8")
+    st.download_button(
+        label="📥 Download My Qualified Courses Slip (CSV)",
+        data=csv_export,
+        file_name=f"Pendyn_Eligible_Courses_Agg_{user_aggregate}.csv",
+        mime="text/csv"
+    )
+else:
+    st.warning("No regular courses matched your exact aggregate and filters. Check the 'Close Call' options below or widen your filters!")
 
-with tab3:
-    st.write("Select programmes below to compare their cut-off points side-by-side:")
-    if not filtered_df.empty:
-        filtered_df["Display_Label"] = filtered_df["University"] + " - " + filtered_df["Course"]
-        chosen_courses = st.multiselect(
-            "Choose programmes to compare",
-            options=filtered_df["Display_Label"].tolist(),
-            max_selections=4,
-            key="compare_courses_multiselect"
-        )
-        if chosen_courses:
-            comparison_df = filtered_df[filtered_df["Display_Label"].isin(chosen_courses)]
-            st.table(comparison_df[["University", "Category", "Course", "Cutoff"]])
-        else:
-            st.info("💡 Select up to 4 courses above to compare them side-by-side.")
-    else:
-        st.warning("No courses available to compare with current filters.")
-
-# --- FEATURE 3: GENERAL ADMISSION GUIDELINES EXPANDER ---
-st.markdown("---")
-with st.expander("ℹ️ General Ghanaian University Admission Requirements (2027 Guide)"):
-    st.markdown("""
-    * **Core Subjects Rule:** Public universities require credit passes (**A1 to C6**) in Core English Language, Core Mathematics, and either Integrated Science or Social Studies.
-    * **Elective Subjects:** You need credit passes in **3 elective subjects** relevant to your desired course of study.
-    * **Competitive Cut-offs:** Highly competitive programmes like Medicine, Law, and Computer Engineering often require stricter thresholds (lower aggregates like 6 to 8).
-    """)
-
-# --- FOOTER ---
-st.markdown(
-    "<div style='text-align: center; color: #64748B; font-size: 13px; margin-top: 24px;'>"
-    "Built by Pendyn • Always verify final cut-offs against official 2027 university admission brochures."
-    "</div>",
-    unsafe_allow_html=True
-            )
+# --- FEATURE 3: CLOSE CALL & FEE-PAYING ALTERNATIVES ---
+if not close_call_df.empty:
+    st.markdown("---")
+    st.markdown("#### ⚡ Close Calls & Fee-Paying / Parallel Alternatives (1–3 Points Away)")
+    st.info(
+        "💡 **Tip:** You missed the regular cutoffs below by just **1 to 3 points**. "
+        "Many Ghanaian universities offer **Fee-Paying** or **Parallel** admission slots for applicants within this range!"
+    )
+    close_display = close_call_df[["University", "Course", "Category", "Cutoff"]].copy()
+    close_display["Points Away"] = user_aggregate - close_display["Cutoff"]
+    st.dataframe(close_display.reset_index(drop=True), use_container_width=True)
